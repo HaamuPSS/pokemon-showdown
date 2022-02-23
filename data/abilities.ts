@@ -4529,4 +4529,12 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 3.5,
 		num: -7,
 	},
+	revontulet: {
+		onStart(source) {
+			this.field.setWeather('hail');
+		},
+		name: "Revontulet",
+		rating: 4,
+		num: -8,
+	},
 };
