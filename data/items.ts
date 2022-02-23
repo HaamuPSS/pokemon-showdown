@@ -27,6 +27,34 @@ export const Items: {[itemid: string]: ItemData} = {
 		gen: 6,
 		isNonstandard: "Past",
 	},
+	butterfrite: {
+		name: "Butterfrite",
+		spritenum: 575,
+		megaStone: "Butterfree-Mega",
+		megaEvolves: "Butterfree",
+		itemUser: ["Butterfree"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -4,
+		gen: 6,
+		isNonstandard: "Past",
+	},
+	raticatite: {
+		name: "Raticatite",
+		spritenum: 575,
+		megaStone: "Raticate-Mega",
+		megaEvolves: "Raticate",
+		itemUser: ["Raticate"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -5,
+		gen: 6,
+		isNonstandard: "Past",
+	},
 	absolite: {
 		name: "Absolite",
 		spritenum: 576,

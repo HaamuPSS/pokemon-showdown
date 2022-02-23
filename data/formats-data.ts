@@ -96,6 +96,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "(PU)",
 		doublesTier: "(DUU)",
 	},
+	butterfreemega: {
+		isNonstandard: "Past",
+		tier: "Illegal",
+	},
 	butterfreegmax: {
 		randomBattleMoves: ["airslash", "bugbuzz", "quiverdance", "sleeppowder"],
 		randomBattleLevel: 87,
@@ -144,6 +148,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "Illegal",
 	},
 	raticate: {
+		isNonstandard: "Past",
+		tier: "Illegal",
+	},
+	raticatemega: {
 		isNonstandard: "Past",
 		tier: "Illegal",
 	},
