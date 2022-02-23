@@ -7201,4 +7201,32 @@ export const Items: {[itemid: string]: ItemData} = {
 		gen: 6,
 		isNonstandard: "Past",
 	},
+	arbokite: {
+		name: "Arbokite",
+		spritenum: 575,
+		megaStone: "Arbok-Mega",
+		megaEvolves: "Arbok",
+		itemUser: ["Arbok"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -8,
+		gen: 6,
+		isNonstandard: "Past",
+	},
+	raichunite: {
+		name: "Raichunite",
+		spritenum: 575,
+		megaStone: "Raichu-Mega",
+		megaEvolves: "Raichu",
+		itemUser: ["Raichu"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -9,
+		gen: 6,
+		isNonstandard: "Past",
+	},
 };

@@ -187,6 +187,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		isNonstandard: "Past",
 		tier: "Illegal",
 	},
+	arbokmega: {
+		isNonstandard: "Past",
+		tier: "PU",
+	},
 	pichu: {
 		tier: "LC",
 	},
@@ -276,6 +280,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		randomBattleNoDynamaxMoves: ["encore", "focusblast", "grassknot", "nastyplot", "surf", "thunderbolt", "voltswitch"],
 		tier: "(PU)",
 		doublesTier: "(DUU)",
+	},
+	raichumega: {
+		isNonstandard: "Past",
+		tier: "PU",
 	},
 	raichualola: {
 		randomBattleMoves: ["focusblast", "grassknot", "nastyplot", "psyshock", "thunderbolt", "voltswitch"],
