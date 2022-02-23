@@ -522,7 +522,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 	raticatealolamega: {
 		num: 20,
 		name: "Raticate-Alola-Mega",
-		baseSpecies: "Raticate",
+		baseSpecies: "Raticate-Alola",
 		forme: "Mega",
 		types: ["Dark", "Normal"],
 		baseStats: {hp: 75, atk: 121, def: 100, spa: 20, spd: 160, spe: 37},
