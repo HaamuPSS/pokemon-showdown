@@ -4491,4 +4491,12 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 3,
 		num: -4,
 	},
+	laserbeak: {
+		onModifyCritRatio(critRatio) {
+			return critRatio + 3;
+		},
+		name: "Laser Beak",
+		rating: 4,
+		num: -5,
+	},
 };

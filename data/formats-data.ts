@@ -171,6 +171,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		isNonstandard: "Past",
 		tier: "Illegal",
 	},
+	fearowmega: {
+		isNonstandard: "Past",
+		tier: "PU",
+	},
 	ekans: {
 		isNonstandard: "Past",
 		tier: "Illegal",
