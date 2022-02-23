@@ -13,6 +13,20 @@ export const Items: {[itemid: string]: ItemData} = {
 		gen: 6,
 		isNonstandard: "Past",
 	},
+	bulbasaurite: {
+		name: "Bulbasaurite",
+		spritenum: 575,
+		megaStone: "Bulbasaur-Mega",
+		megaEvolves: "Bulbasaur",
+		itemUser: ["Bulbasaur"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -3,
+		gen: 6,
+		isNonstandard: "Past",
+	},
 	absolite: {
 		name: "Absolite",
 		spritenum: 576,
