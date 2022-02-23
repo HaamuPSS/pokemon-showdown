@@ -98,7 +98,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	},
 	butterfreemega: {
 		isNonstandard: "Past",
-		tier: "Illegal",
+		tier: "PU",
 	},
 	butterfreegmax: {
 		randomBattleMoves: ["airslash", "bugbuzz", "quiverdance", "sleeppowder"],
@@ -153,7 +153,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	},
 	raticatemega: {
 		isNonstandard: "Past",
-		tier: "Illegal",
+		tier: "PU",
 	},
 	raticatealola: {
 		isNonstandard: "Past",

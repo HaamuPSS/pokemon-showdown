@@ -479,8 +479,8 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 	},
 	raticatemega: {
 		num: 20,
-		name: "Bulbasaur-Mega",
-		baseSpecies: "Bulbasaur",
+		name: "Raticate-Mega",
+		baseSpecies: "Raticate",
 		forme: "Mega",
 		types: ["Normal"],
 		baseStats: {hp: 51, atk: 143, def: 60, spa: 60, spd: 78, spe: 131},
