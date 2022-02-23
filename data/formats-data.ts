@@ -308,6 +308,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "PU",
 		doublesTier: "(DUU)",
 	},
+	sandslashmega: {
+		isNonstandard: "Past",
+		tier: "PU",
+	},
 	sandslashalola: {
 		randomBattleMoves: ["earthquake", "ironhead", "knockoff", "rapidspin", "swordsdance", "tripleaxel"],
 		randomBattleLevel: 86,
@@ -330,6 +334,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "RU",
 		doublesTier: "(DUU)",
 	},
+	nidoqueenmega: {
+		isNonstandard: "Past",
+		tier: "PU",
+	},
 	nidoranm: {
 		tier: "LC",
 	},
@@ -343,6 +351,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		randomDoubleBattleLevel: 84,
 		tier: "UU",
 		doublesTier: "(DUU)",
+	},
+	nidokingmega: {
+		isNonstandard: "Past",
+		tier: "PU",
 	},
 	cleffa: {
 		tier: "LC",

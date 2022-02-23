@@ -7229,4 +7229,46 @@ export const Items: {[itemid: string]: ItemData} = {
 		gen: 6,
 		isNonstandard: "Past",
 	},
+	sandslashite: {
+		name: "Sandslashite",
+		spritenum: 575,
+		megaStone: "Sandslash-Mega",
+		megaEvolves: "Sandslash",
+		itemUser: ["Sandslash"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -10,
+		gen: 6,
+		isNonstandard: "Past",
+	},
+	nidoquenite: {
+		name: "Nidoqueen",
+		spritenum: 575,
+		megaStone: "Nidoqueen-Mega",
+		megaEvolves: "Nidoqueen",
+		itemUser: ["Nidoqueen"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -11,
+		gen: 6,
+		isNonstandard: "Past",
+	},
+	nidokinite: {
+		name: "Nidokinite",
+		spritenum: 575,
+		megaStone: "Nidoking-Mega",
+		megaEvolves: "Nidoking",
+		itemUser: ["Nidoking"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -12,
+		gen: 6,
+		isNonstandard: "Past",
+	},
 };
