@@ -7173,6 +7173,20 @@ export const Items: {[itemid: string]: ItemData} = {
 		gen: 6,
 		isNonstandard: "Past",
 	},
+	araticatite: {
+		name: "A-Raticatite",
+		spritenum: 575,
+		megaStone: "Raticate-Alola-Mega",
+		megaEvolves: "Raticate-Alola",
+		itemUser: ["Raticate-Alola"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -6,
+		gen: 6,
+		isNonstandard: "Past",
+	},
 	fearowite: {
 		name: "Fearowite",
 		spritenum: 575,
@@ -7183,7 +7197,7 @@ export const Items: {[itemid: string]: ItemData} = {
 			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
 			return true;
 		},
-		num: -6,
+		num: -7,
 		gen: 6,
 		isNonstandard: "Past",
 	},

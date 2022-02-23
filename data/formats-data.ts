@@ -163,6 +163,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		isNonstandard: "Past",
 		tier: "Illegal",
 	},
+	raticatealolamega: {
+		isNonstandard: "Past",
+		tier: "PU",
+	},
 	spearow: {
 		isNonstandard: "Past",
 		tier: "Illegal",
