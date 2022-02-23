@@ -373,6 +373,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "OU",
 		doublesTier: "(DUU)",
 	},
+	clefablemega: {
+		isNonstandard: "Past",
+		tier: "PU",
+	},
 	vulpix: {
 		tier: "LC",
 	},
@@ -387,6 +391,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "(PU)",
 		doublesTier: "DUU",
 	},
+	ninetalesmega: {
+		isNonstandard: "Past",
+		tier: "PU",
+	},
 	ninetalesalola: {
 		randomBattleMoves: ["auroraveil", "blizzard", "freezedry", "moonblast", "nastyplot"],
 		randomBattleLevel: 79,
@@ -394,6 +402,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		randomDoubleBattleLevel: 81,
 		tier: "OU",
 		doublesTier: "DOU",
+	},
+	ninetalesalolamega: {
+		isNonstandard: "Past",
+		tier: "PU",
 	},
 	igglybuff: {
 		tier: "LC",
@@ -408,6 +420,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		randomDoubleBattleLevel: 90,
 		tier: "(PU)",
 		doublesTier: "(DUU)",
+	},
+	wigglytuffmega: {
+		isNonstandard: "Past",
+		tier: "PU",
 	},
 	zubat: {
 		tier: "LC",

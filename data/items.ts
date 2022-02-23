@@ -7271,4 +7271,60 @@ export const Items: {[itemid: string]: ItemData} = {
 		gen: 6,
 		isNonstandard: "Past",
 	},
+	clefablite: {
+		name: "Clefablite",
+		spritenum: 575,
+		megaStone: "Clefable-Mega",
+		megaEvolves: "Clefable",
+		itemUser: ["Clefable"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -13,
+		gen: 6,
+		isNonstandard: "Past",
+	},
+	ninetalite: {
+		name: "Ninetalite",
+		spritenum: 575,
+		megaStone: "Ninetales-Mega",
+		megaEvolves: "Ninetales",
+		itemUser: ["Ninetales"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -14,
+		gen: 6,
+		isNonstandard: "Past",
+	},
+	aninetalite: {
+		name: "A-Ninetalite",
+		spritenum: 575,
+		megaStone: "Ninetales-Alola-Mega",
+		megaEvolves: "Ninetales-Alola",
+		itemUser: ["Ninetales-Alola"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -15,
+		gen: 6,
+		isNonstandard: "Past",
+	},
+	wigglitite: {
+		name: "Wigglitite",
+		spritenum: 575,
+		megaStone: "Wigglytuff-Mega",
+		megaEvolves: "Wigglytuff",
+		itemUser: ["Wigglytuff"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -16,
+		gen: 6,
+		isNonstandard: "Past",
+	},
 };
