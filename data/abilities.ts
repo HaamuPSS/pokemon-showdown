@@ -4538,4 +4538,23 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 4,
 		num: -8,
 	},
+	nightmare: {
+		onModifyTypePriority: -1,
+		onModifyType(move, pokemon) {
+			const noModifyType = [
+				'judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'terrainpulse', 'weatherball',
+			];
+			if (move.type === 'Fairy' && !noModifyType.includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+				move.type = 'Ghost';
+				move.refrigerateBoosted = true;
+			}
+		},
+		onBasePowerPriority: 23,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.refrigerateBoosted) return this.chainModify([4915, 4096]);
+		},
+		name: "Nightmare",
+		rating: 4,
+		num: -8,
+	},
 };
