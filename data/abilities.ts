@@ -4557,4 +4557,15 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 4,
 		num: -8,
 	},
+	tintedlens: {
+		onModifyDamage(damage, source, target, move) {
+			if (target.getMoveHitData(move).typeMod < 0) {
+				this.debug('Tinted Lens boost');
+				return this.chainModify(2);
+			}
+		},
+		name: "Tinted Lens",
+		rating: 4,
+		num: 110,
+	},
 };
