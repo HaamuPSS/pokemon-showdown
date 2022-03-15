@@ -4532,6 +4532,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	revontulet: {
 		onStart(source) {
 			this.field.setWeather('hail');
+				side.addSideCondition('auroraveil');
 		},
 		name: "Revontulet",
 		rating: 4,
