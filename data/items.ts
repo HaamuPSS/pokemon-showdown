@@ -7244,7 +7244,7 @@ export const Items: {[itemid: string]: ItemData} = {
 		isNonstandard: "Past",
 	},
 	nidoquenite: {
-		name: "Nidoqueen",
+		name: "Nidoquenite",
 		spritenum: 575,
 		megaStone: "Nidoqueen-Mega",
 		megaEvolves: "Nidoqueen",
