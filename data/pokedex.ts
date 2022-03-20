@@ -1242,7 +1242,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		forme: "Mega",
 		types: ["Ice", "Fairy"],
 		baseStats: {hp: 73, atk: 67, def: 83, spa: 120, spd: 136, spe: 126},
-		abilities: {0: "Solar Power"},
+		abilities: {0: "Revontulet"},
 		heightm: 1.1,
 		weightkg: 19.9,
 		color: "Yellow",
