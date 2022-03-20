@@ -1201,8 +1201,8 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		evoType: "useItem",
 		evoItem: "Fire Stone",
 		eggGroups: ["Field"],
-		otherFormes: ["Ninetales-Mega", "Ninetales-Alola", "Ninetales-Alola-Mega"],
-		formeOrder: ["Ninetales", "Ninetales-Mega", "Ninetales-Alola", "Ninetales-Alola-Mega"],
+		otherFormes: ["Ninetales-Mega"],
+		formeOrder: ["Ninetales", "Ninetales-Mega"],
 	},
 	ninetalesmega: {
 		num: 38,
@@ -1221,8 +1221,6 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 	ninetalesalola: {
 		num: 38,
 		name: "Ninetales-Alola",
-		baseSpecies: "Ninetales",
-		forme: "Alola",
 		types: ["Ice", "Fairy"],
 		genderRatio: {M: 0.25, F: 0.75},
 		baseStats: {hp: 73, atk: 67, def: 75, spa: 81, spd: 100, spe: 109},
@@ -1234,9 +1232,11 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		evoType: "useItem",
 		evoItem: "Ice Stone",
 		eggGroups: ["Field"],
+		otherFormes: ["Ninetales-Alola-Mega"],
+		formeOrder: ["Ninetales-Alola", "Ninetales-Alola-Mega"],
 	},
 	ninetalesalolamega: {
-		num: 38,
+		num: -67,
 		name: "Ninetales-Alola-Mega",
 		baseSpecies: "Ninetales-Alola",
 		forme: "Mega",
