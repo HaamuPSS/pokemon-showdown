@@ -4532,9 +4532,6 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	revontulet: {
 		onStart(source) {
 			this.field.setWeather('hail');
-			onTry() {
-				return this.field.isWeather('hail');
-			},
 			condition: {
 				duration: 5,
 				durationCallback(target, source, effect) {
