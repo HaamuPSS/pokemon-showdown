@@ -1219,7 +1219,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		requiredItem: "Ninetalite",
 	},
 	ninetalesalola: {
-		num: 38,
+		num: -67,
 		name: "Ninetales-Alola",
 		types: ["Ice", "Fairy"],
 		genderRatio: {M: 0.25, F: 0.75},
