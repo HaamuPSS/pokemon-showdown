@@ -7341,4 +7341,32 @@ export const Items: {[itemid: string]: ItemData} = {
 		gen: 6,
 		isNonstandard: "Past",
 	},
+	rapidasite: {
+		name: "Rapidasite",
+		spritenum: 575,
+		megaStone: "Rapidash-Mega",
+		megaEvolves: "Rapidash",
+		itemUser: ["Rapidash"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -18,
+		gen: 6,
+		isNonstandard: "Past",
+	},
+	arapidasite: {
+		name: "A-Rapidasite",
+		spritenum: 575,
+		megaStone: "Rapidash-Alola-Mega",
+		megaEvolves: "Rapidash-Alola",
+		itemUser: ["Rapidash-Alola"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -19,
+		gen: 6,
+		isNonstandard: "Past",
+	},
 };
