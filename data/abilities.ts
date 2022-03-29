@@ -4577,5 +4577,5 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		name: "Perfect Execution",
 		rating: 3.5,
 		num: -11,
-	}
+	},
 };
