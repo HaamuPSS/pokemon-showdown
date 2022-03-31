@@ -4572,6 +4572,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	perfectexecution: {
 		onModifyMove(move, pokemon) {
 			move.basePower = 100;
+			}
 		},
 		name: "Perfect Execution",
 		rating: 3.5,
