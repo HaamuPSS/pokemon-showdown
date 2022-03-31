@@ -3,7 +3,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "LC",
 	},
 	bulbasaurmega: {
-		tier: "Illegal",
+		tier: "LC",
 	},
 	ivysaur: {
 		tier: "NFE",
@@ -699,9 +699,6 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "(PU)",
 		doublesTier: "(DUU)",
 	},
-	rapidashmega: {
-		tier: "PU",
-	},
 	rapidashgalar: {
 		randomBattleMoves: ["highhorsepower", "morningsun", "playrough", "swordsdance", "zenheadbutt"],
 		randomBattleLevel: 84,
@@ -709,9 +706,6 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		randomDoubleBattleLevel: 88,
 		tier: "(PU)",
 		doublesTier: "(DUU)",
-	},
-	rapidashalolamega: {
-		tier: "PU",
 	},
 	slowpoke: {
 		tier: "LC",

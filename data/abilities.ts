@@ -4557,18 +4557,14 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 4,
 		num: -8,
 	},
-	shootingstar: {
-		onTryHit(target, source, move) {
-			if (move.type === 'Ground' && !target.activeTurns) {
-				this.add('-immune', target, '[from] ability: Shooting Star');
-				return null;
+	tintedlens: {
+		onModifyDamage(damage, source, target, move) {
+			if (target.getMoveHitData(move).typeMod < 0) {
+				this.debug('Tinted Lens boost');
+				return this.chainModify(2);
 			}
 		},
-		onEffectiveness(typeMod, target, type, move) {
-			if (move.type !== 'Fairy');
-			return typeMod + this.dex.getEffectiveness('Flying', type);
-		},
-		name: "Shooting Star",
+		name: "Tinted Lens",
 		rating: 4,
 		num: 110,
 	},
