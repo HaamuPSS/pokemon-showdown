@@ -7369,18 +7369,4 @@ export const Items: {[itemid: string]: ItemData} = {
 		gen: 6,
 		isNonstandard: "Past",
 	},
-	grapidasite: {
-		name: "Dwgonite",
-		spritenum: 575,
-		megaStone: "Dewgong-Mega",
-		megaEvolves: "Dewgong",
-		itemUser: ["Dewgong"],
-		onTakeItem(item, source) {
-			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
-			return true;
-		},
-		num: -20,
-		gen: 6,
-		isNonstandard: "Past",
-	},
 };

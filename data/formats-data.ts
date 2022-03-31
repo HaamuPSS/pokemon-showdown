@@ -700,7 +700,6 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "(DUU)",
 	},
 	rapidashmega: {
-		isNonstandard: "Past",
 		tier: "PU",
 	},
 	rapidashgalar: {
@@ -712,7 +711,6 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		doublesTier: "(DUU)",
 	},
 	rapidashgalarmega: {
-		isNonstandard: "Past",
 		tier: "PU",
 	},
 	slowpoke: {
@@ -806,10 +804,6 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	dewgong: {
 		isNonstandard: "Past",
 		tier: "Illegal",
-	},
-	dewgongmega: {
-		isNonstandard: "Past",
-		tier: "PU",
 	},
 	grimer: {
 		isNonstandard: "Past",
