@@ -4541,9 +4541,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	nightmare: {
 		onModifyTypePriority: -1,
 		onModifyType(move, pokemon) {
-			const noModifyType = [
-				'judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'terrainpulse', 'weatherball',
-			];
+			const noModifyType =
 			if (move.type === 'Fairy' && !noModifyType.includes(move.id) && !(move.isZ && move.category !== 'Status')) {
 				move.type = 'Ghost';
 				move.refrigerateBoosted = true;
@@ -4556,16 +4554,5 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		name: "Nightmare",
 		rating: 4,
 		num: -8,
-	},
-	tintedlens: {
-		onModifyDamage(damage, source, target, move) {
-			if (target.getMoveHitData(move).typeMod < 0) {
-				this.debug('Tinted Lens boost');
-				return this.chainModify(2);
-			}
-		},
-		name: "Tinted Lens",
-		rating: 4,
-		num: 110,
 	},
 };
