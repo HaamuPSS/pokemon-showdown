@@ -2070,10 +2070,10 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		otherFormes: ["Rapidash-Galar-Mega"],
 		formeOrder: ["Rapidash-Galar", "Rapidash-Galar-Mega"],
 	},
-	rapidashgalarmega: {
+	rapidashalolamega: {
 		num: -69,
-		name: "Rapidash-Galar-Mega",
-		baseSpecies: "Rapidash-Galar",
+		name: "Rapidash-Alola-Mega",
+		baseSpecies: "Rapidash-Alola",
 		forme: "Mega",
 		types: ["Psychic", "Fairy"],
 		baseStats: {hp: 65, atk: 130, def: 70, spa: 126, spd: 80, spe: 129},
@@ -2082,7 +2082,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		weightkg: 18.5,
 		color: "Green",
 		eggGroups: ["Field"],
-		requiredItem: "G-Rapidasite",
+		requiredItem: "A-Rapidasite",
 	},
 	slowpoke: {
 		num: 79,

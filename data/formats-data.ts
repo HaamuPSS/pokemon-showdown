@@ -710,7 +710,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "(PU)",
 		doublesTier: "(DUU)",
 	},
-	rapidashgalarmega: {
+	rapidashalolamega: {
 		tier: "PU",
 	},
 	slowpoke: {
