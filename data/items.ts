@@ -7327,18 +7327,4 @@ export const Items: {[itemid: string]: ItemData} = {
 		gen: 6,
 		isNonstandard: "Past",
 	},
-	vileplumite: {
-		name: "Vileplumite",
-		spritenum: 575,
-		megaStone: "Vileplume-Mega",
-		megaEvolves: "Vileplume",
-		itemUser: ["Vileplume"],
-		onTakeItem(item, source) {
-			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
-			return true;
-		},
-		num: -17,
-		gen: 6,
-		isNonstandard: "Past",
-	},
 };
