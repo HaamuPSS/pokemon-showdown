@@ -4541,7 +4541,9 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	nightmare: {
 		onModifyTypePriority: -1,
 		onModifyType(move, pokemon) {
-			const noModifyType =
+			const noModifyType = [
+				'judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'terrainpulse', 'weatherball',
+			];
 			if (move.type === 'Fairy' && !noModifyType.includes(move.id) && !(move.isZ && move.category !== 'Status')) {
 				move.type = 'Ghost';
 				move.refrigerateBoosted = true;
