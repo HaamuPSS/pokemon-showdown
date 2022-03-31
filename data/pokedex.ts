@@ -504,7 +504,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		evoLevel: 20,
 		eggGroups: ["Field"],
 		otherFormes: ["Raticate-Alola-Totem, Raticate-Alola-Mega"],
-		formeOrder: ["Raticate-Alola", "Raticate-Alola-Totem", "Raticate-Alola-Mega"],
+		formeOrder: ["Raticate-Alola", "Raticate-Alola-Totem" "Raticate-Alola-Mega"],
 	},
 	raticatealolatotem: {
 		num: -67,
