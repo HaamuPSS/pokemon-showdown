@@ -4538,4 +4538,20 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 4,
 		num: -8,
 	},
+	nightmare: {
+		onModifyTypePriority: -1,
+		onModifyType(move, pokemon) {
+			if (move.type === 'Fairy' && !noModifyType.includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+				move.type = 'Ghost';
+				move.nightmareBoosted = true;
+			}
+		},
+		onBasePowerPriority: 23,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.nightmareBoosted) return this.chainModify([4915, 4096]);
+		},
+		name: "Nightmare",
+		rating: 4,
+		num: -9,
+	},
 };
