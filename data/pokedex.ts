@@ -1245,7 +1245,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		abilities: {0: "Revontulet"},
 		heightm: 1.1,
 		weightkg: 19.9,
-		color: "Yellow",
+		color: "Red",
 		eggGroups: ["Field"],
 		requiredItem: "A-Ninetalite",
 	},
