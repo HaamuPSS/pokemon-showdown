@@ -416,6 +416,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	rapidash: {
 		name: "Rapidash",
 	},
+	rapidashmega: {
+		name: "Rapidash-Mega",
+	},
 	rapidashgalar: {
 		name: "Rapidash-Galar",
 	},
