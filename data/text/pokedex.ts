@@ -2,6 +2,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	bulbasaur: {
 		name: "Bulbasaur",
 	},
+	bulbasaurmega: {
+		name: "Bulbasaur-Mega",
+	},
 	ivysaur: {
 		name: "Ivysaur",
 	},
@@ -56,6 +59,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	butterfree: {
 		name: "Butterfree",
 	},
+	butterfreemega: {
+		name: "Butterfree-Mega",
+	},
 	butterfreegmax: {
 		name: "Butterfree-Gmax",
 	},
@@ -92,8 +98,14 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	raticate: {
 		name: "Raticate",
 	},
+	raticatemega: {
+		name: "Raticate-Mega",
+	},
 	raticatealola: {
 		name: "Raticate-Alola",
+	},
+	raticatealolamega: {
+		name: "Raticate-Alola-Mega",
 	},
 	raticatealolatotem: {
 		name: "Raticate-Alola-Totem",
@@ -104,11 +116,17 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	fearow: {
 		name: "Fearow",
 	},
+	fearowmega: {
+		name: "Fearow-Mega",
+	},
 	ekans: {
 		name: "Ekans",
 	},
 	arbok: {
 		name: "Arbok",
+	},
+	arbokmega: {
+		name: "Arbok-Mega",
 	},
 	pikachu: {
 		name: "Pikachu",
@@ -164,6 +182,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	raichu: {
 		name: "Raichu",
 	},
+	raichumega: {
+		name: "Raichu-Mega",
+	},
 	raichualola: {
 		name: "Raichu-Alola",
 	},
@@ -175,6 +196,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	},
 	sandslash: {
 		name: "Sandslash",
+	},
+	sandslashmega: {
+		name: "Sandslash-Mega",
 	},
 	sandslashalola: {
 		name: "Sandslash-Alola",
@@ -188,6 +212,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	nidoqueen: {
 		name: "Nidoqueen",
 	},
+	nidoqueenmega: {
+		name: "Nidoqueen-Mega",
+	},
 	nidoranm: {
 		name: "Nidoran-M",
 	},
@@ -197,11 +224,17 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	nidoking: {
 		name: "Nidoking",
 	},
+	nidokingmega: {
+		name: "Nidoking-Mega",
+	},
 	clefairy: {
 		name: "Clefairy",
 	},
 	clefable: {
 		name: "Clefable",
+	},
+	clefablemega: {
+		name: "Clefable-Mega",
 	},
 	vulpix: {
 		name: "Vulpix",
@@ -212,14 +245,23 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	ninetales: {
 		name: "Ninetales",
 	},
+	ninetalesmega: {
+		name: "Ninetales-Mega",
+	},
 	ninetalesalola: {
 		name: "Ninetales-Alola",
+	},
+	ninetalesalolamega: {
+		name: "Ninetales-Alola-Mega",
 	},
 	jigglypuff: {
 		name: "Jigglypuff",
 	},
 	wigglytuff: {
 		name: "Wigglytuff",
+	},
+	wigglytuffmega: {
+		name: "Wigglytuff-Mega",
 	},
 	zubat: {
 		name: "Zubat",
@@ -235,6 +277,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	},
 	vileplume: {
 		name: "Vileplume",
+	},
+	vileplumemega: {
+		name: "Vileplume-Mega",
 	},
 	paras: {
 		name: "Paras",
