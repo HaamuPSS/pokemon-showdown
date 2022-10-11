@@ -320,6 +320,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "NUBL",
 		doublesTier: "(DUU)",
 	},
+	sandslashalolamega: {
+		isNonstandard: "Past",
+		tier: "PU",
+	},
 	nidoranf: {
 		tier: "LC",
 	},
@@ -453,7 +457,7 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "NU",
 		doublesTier: "(DUU)",
 	},
-	wigglytuffmega: {
+	vileplumemega: {
 		isNonstandard: "Past",
 		tier: "PU",
 	},

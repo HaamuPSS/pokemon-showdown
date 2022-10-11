@@ -1736,4 +1736,34 @@ export const AbilitiesText: {[k: string]: AbilityText} = {
 
 		activate: "  [POKEMON] extends [MOVE] by 2 turns!",
 	},
+	: {
+		name: "Laser Beak",
+		desc: "This pokémon's attacks always result in critical hits.",
+		shortDesc: "",
+	},
+	: {
+		name: "Petrificate",
+		desc: "On switch-in, this Pokemon lowers the Speed of adjacent opposing Pokemon by 1 stage. Inner Focus, Oblivious, Own Tempo, Scrappy, and Pokemon behind a substitute are immune.",
+		shortDesc: "On switch-in, lowers opponent's Speed.",
+	},
+	: {
+		name: "Revontulet",
+		desc: "On switch-in, changes the weather to hail and sets up an Aurora Veil.",
+		shortDesc: "On switch-in, changes the weather to hail and sets up an Aurora Veil.",
+	},
+	: {
+		name: "Nightmare",
+		desc: "This Pokemon's Fairy-type moves become Ghost-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+		shortDesc: "This Pokemon's Fairy-type moves become Ghost type and have 1.2x power",
+	},
+	: {
+		name: "Perfect Execution",
+		desc: "All moves used by this pokémon have their base power changed to 100, except moves that can hit 5 times.",
+		shortDesc: "All moves used have 100 base power.",
+	},
+	: {
+		name: "Full Metal Claws",
+		desc: "This Pokemon's Normal-type moves become Steel-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+		shortDesc: "This Pokemon's Normal-type moves become Steel type and have 1.2x power",
+	},
 };

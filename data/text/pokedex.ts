@@ -203,6 +203,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	sandslashalola: {
 		name: "Sandslash-Alola",
 	},
+	sandslashalolamega: {
+		name: "Sandslash-Alola-Mega",
+	},
 	nidoranf: {
 		name: "Nidoran-F",
 	},

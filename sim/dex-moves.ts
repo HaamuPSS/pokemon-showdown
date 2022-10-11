@@ -302,6 +302,7 @@ export interface ActiveMove extends MutableMove {
 	auraBooster?: Pokemon;
 	causedCrashDamage?: boolean;
 	forceStatus?: ID;
+  fullmetalBoosted?: boolean;
 	galvanizeBoosted?: boolean;
 	hasAuraBreak?: boolean;
 	hasBounced?: boolean;
