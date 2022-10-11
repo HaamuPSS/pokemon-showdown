@@ -4558,11 +4558,9 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: -9,
 	},
 	perfectexecution: {
-		onBasePowerPriority: 30,
-		onBasePower(basePower, attacker, defender, move) {
-			if (move.category === !'Status') {
-				this.debug('Perfect Execution boost');
-				return 100;
+		onBasePowerPriority: 21,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.basePower > 0) return basePower = 100;
 			}
 		},
 		name: "Perfect Execution",
