@@ -568,7 +568,7 @@ export class Pokemon {
 
 	getActionSpeed() {
 		let speed = this.getStat('spe', false, false);
-		if (this.battle.field.getPseudoWeather('trickroom')) {
+		if (this.battle.field.getPseudoWeather('trickroom')) || (['shroomtrip'].includes(attacker.effectiveWeather())) {
 			speed = 10000 - speed;
 		}
 		return this.battle.trunc(speed, 13);
