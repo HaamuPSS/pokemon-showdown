@@ -4560,7 +4560,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	perfectexecution: {
 		onBasePowerPriority: 21,
 		onBasePower(basePower, pokemon, target, move) {
-			if (!effect.multihit) return basePower = 100;
+			if (move.basePower > 25) return basePower = 100;
 		},
 		name: "Perfect Execution",
 		rating: 3.5,
