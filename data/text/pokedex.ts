@@ -290,6 +290,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	parasect: {
 		name: "Parasect",
 	},
+	parasectmega: {
+		name: "Parasect-Mega",
+	},
 	venonat: {
 		name: "Venonat",
 	},

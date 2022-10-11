@@ -7383,4 +7383,18 @@ export const Items: {[itemid: string]: ItemData} = {
 		gen: 6,
 		isNonstandard: "Past",
 	},
+	parasectite: {
+		name: "Parasectite",
+		spritenum: 575,
+		megaStone: "Parasect-Mega",
+		megaEvolves: "Parasect",
+		itemUser: ["Parasect"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -21,
+		gen: 6,
+		isNonstandard: "Past",
+	},
 };

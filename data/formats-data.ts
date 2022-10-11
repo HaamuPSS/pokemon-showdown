@@ -477,6 +477,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		isNonstandard: "Past",
 		tier: "Illegal",
 	},
+	parasectmega: {
+		isNonstandard: "Past",
+		tier: "PU",
+	},
 	venonat: {
 		isNonstandard: "Past",
 		tier: "Illegal",
