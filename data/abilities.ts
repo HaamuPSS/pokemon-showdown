@@ -4561,7 +4561,6 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		onBasePowerPriority: 21,
 		onBasePower(basePower, pokemon, target, move) {
 			if (move.basePower > 0) return basePower = 100;
-			}
 		},
 		name: "Perfect Execution",
 		rating: 3.5,
