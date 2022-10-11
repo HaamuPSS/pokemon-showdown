@@ -4557,4 +4557,16 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 4,
 		num: -9,
 	},
+	perfectexecution: {
+		onBasePowerPriority: 30,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.category === !'Status') {
+				this.debug('Perfect Execution boost');
+				return 100;
+			}
+		},
+		name: "Perfect Execution",
+		rating: 3.5,
+		num: -10,
+	},
 };

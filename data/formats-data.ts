@@ -803,6 +803,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		isNonstandard: "Past",
 		tier: "Illegal",
 	},
+	dewgongmega: {
+		isNonstandard: "Past",
+		tier: "PU",
+	},
 	grimer: {
 		isNonstandard: "Past",
 		tier: "Illegal",

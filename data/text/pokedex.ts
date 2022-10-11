@@ -461,6 +461,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	dewgong: {
 		name: "Dewgong",
 	},
+	dewgongmega: {
+		name: "Dewgong-Mega",
+	},
 	grimer: {
 		name: "Grimer",
 	},
