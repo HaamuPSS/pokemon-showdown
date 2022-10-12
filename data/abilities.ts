@@ -4625,7 +4625,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 				}
 				const item = target.takeItem();
 				if (item) {
-					this.add('-enditem', source, yourItem, '[silent]', '[from] ability: Rats Gambit', '[of] ' + source);
+					this.add('-enditem', target, item.name, '[from] ability: Rats Gambit', '[of] ' + source);
 				}
 			}
 		},
