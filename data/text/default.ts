@@ -263,12 +263,6 @@ export const DefaultText: {[k: string]: DefaultText} = {
 	},
 
 	// weather
-	shroomtrip: {
-		weathername: "Shroom Trip",
-		start: "",
-		end: "",
-		upkeep: "",
-	},
 	sandstorm: {
 		weatherName: "Sandstorm",
 		start: "  A sandstorm kicked up!",
@@ -365,6 +359,10 @@ export const DefaultText: {[k: string]: DefaultText} = {
 	wonderroom: {
 		start: "  It created a bizarre area in which Defense and Sp. Def stats are swapped!",
 		end: "  Wonder Room wore off, and Defense and Sp. Def stats returned to normal!",
+	},
+	shroomtrip: {
+		start: "  Type effectiveness and speed are inversed!",
+		end: "  The field returned to normal!",
 	},
 
 	// misc
