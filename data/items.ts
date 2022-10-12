@@ -7397,4 +7397,18 @@ export const Items: {[itemid: string]: ItemData} = {
 		gen: 6,
 		isNonstandard: "Past",
 	},
+	grapidasite: {
+		name: "G-Rapidasite",
+		spritenum: 575,
+		megaStone: "Rapidash-Galar-Mega",
+		megaEvolves: "Rapidash-Galar",
+		itemUser: ["Rapidash-Galar"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -22,
+		gen: 6,
+		isNonstandard: "Past",
+	},
 };

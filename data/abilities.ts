@@ -4605,6 +4605,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		},
 		name: "Shroom Trip",
 		gen: 8,
+		num: -12,
 	},
 	shootingstar: {
 		onAnyEffectiveness(typeMod, target, type, move) {
