@@ -526,7 +526,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		forme: "Mega",
 		types: ["Dark", "Normal"],
 		baseStats: {hp: 75, atk: 121, def: 100, spa: 20, spd: 160, spe: 37},
-		abilities: {0: "Rats Gambit"},
+		abilities: {0: "Energy Burst"},
 		heightm: 0.7,
 		weightkg: 25.5,
 		color: "Green",
