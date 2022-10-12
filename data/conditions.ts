@@ -453,6 +453,29 @@ export const Conditions: {[k: string]: ConditionData} = {
 	},
 
 	// weather is implemented here since it's so important to the game
+	shroomtrip: {
+		name: 'Shroom Trip',
+		effectType: 'Weather',
+		duration: 0,
+		onEffectiveness(typeMod, target, type, move) {
+			// The effectiveness of Freeze Dry on Water isn't reverted
+			if (move && move.id === 'freezedry' && type === 'Water') return;
+			if (move && !this.dex.getImmunity(move, type)) return 1;
+			return -typeMod;
+		},
+		onFieldStart(field, source, effect) {
+			this.add('-weather', 'DeltaStream', '[from] ability: ' + effect, '[of] ' + source);
+		},
+		onFieldResidualOrder: 1,
+		onFieldResidual() {
+			this.add('-weather', 'DeltaStream', '[upkeep]');
+			this.eachEvent('Weather');
+		},
+		onFieldEnd() {
+			this.add('-weather', 'none');
+		},
+	},
+
 	raindance: {
 		name: 'RainDance',
 		effectType: 'Weather',

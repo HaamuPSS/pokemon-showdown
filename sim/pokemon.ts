@@ -571,7 +571,7 @@ export class Pokemon {
 		if (this.battle.field.getPseudoWeather('trickroom'))  {
 			speed = 10000 - speed;
 		}
-    if (this.battle.field.getPseudoWeather('shroomtrip')) {
+    if (this.battle.field.isWeather(['shroomtrip'])) {
       speed = 10000 - speed;
     }
 		return this.battle.trunc(speed, 13);

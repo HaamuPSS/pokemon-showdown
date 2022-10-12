@@ -4587,19 +4587,23 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	},
 	shroomtrip: {
 		onStart(source) {
-			this.field.addPseudoWeather('shroomtrip');
+			this.field.setWeather('shroomtrip');
+		},
+		onAnySetWeather(target, source, weather) {
+			if (this.field.getWeather().id === 'shroomtrip' && !STRONG_WEATHERS.includes(weather.id)) return false;
 		},
 		onEnd(pokemon) {
+			if (this.field.weatherState.source !== pokemon) return;
 			for (const target of this.getAllActive()) {
 				if (target === pokemon) continue;
 				if (target.hasAbility('shroomtrip')) {
+					this.field.weatherState.source = target;
 					return;
 				}
 			}
-			this.field.removePseudoWeather('shroomtrip');
+			this.field.clearWeather();
 		},
 		name: "Shroom Trip",
 		gen: 8,
-		num: -12,
 	},
 };
