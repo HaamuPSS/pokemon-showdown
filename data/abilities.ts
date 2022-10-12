@@ -4631,7 +4631,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	energyburst: {
 		onSourceBasePowerPriority: 17,
 		onSourceBasePower(basePower, attacker, defender, move) {
-			let ratio = Math.floor(pokemon.getStat('spe') / target.getStat('spe'));
+			let ratio = Math.floor(attacker.getStat('spe') / defender.getStat('spe'));
 			if (ratio >= 4) {
 				return this.chainModify(2);
 			}
