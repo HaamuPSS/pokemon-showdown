@@ -4606,4 +4606,14 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		name: "Shroom Trip",
 		gen: 8,
 	},
+	shootingstar: {
+		onAnyEffectiveness(typeMod, target, type, move) {
+			if (!target.hasAbility('shootingstar') && move.type === 'Fairy') {
+				return typeMod + this.dex.getEffectiveness('Flying', type);
+			}
+		},
+		name: "Shooting Star",
+		rating: 4,
+		num: -13,
+	},
 };
