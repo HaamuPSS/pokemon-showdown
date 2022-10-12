@@ -4617,4 +4617,17 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 4,
 		num: -13,
 	},
+	ratsgambit: {
+		onDamagingHit(damage, target, source, move) {
+			if (source.hp) {
+				const item = target.takeItem();
+				if (item) {
+					this.add('-enditem', target, item.name, '[from] move: Rats Gambit', '[of] ' + source);
+				}
+			}
+		},
+		name: "Rats Gambit",
+		rating: 3,
+		num: -14,
+	},
 };
