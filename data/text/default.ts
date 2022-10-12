@@ -263,6 +263,12 @@ export const DefaultText: {[k: string]: DefaultText} = {
 	},
 
 	// weather
+	shroomtrip: {
+		weathername: "Shroom Trip",
+		start: "",
+		end: "",
+		upkeep: "",
+	},
 	sandstorm: {
 		weatherName: "Sandstorm",
 		start: "  A sandstorm kicked up!",
