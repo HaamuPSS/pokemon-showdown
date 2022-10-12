@@ -4620,14 +4620,13 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	ratsgambit: {
 		onAfterMoveSecondary(target, source, move) {
 			if (source && source !== target && move?.flags['contact']) {
-				if (target.item || target.switchFlag || target.forceSwitchFlag || source.switchFlag === true) {
+				if (target.item) {
 					return;
 				}
-				const yourItem = source.takeItem(target);
-				if (!yourItem) {
-					return;
+				const item = target.takeItem();
+				if (item) {
+					this.add('-enditem', source, yourItem, '[silent]', '[from] ability: Rats Gambit', '[of] ' + source);
 				}
-				this.add('-enditem', source, yourItem, '[silent]', '[from] ability: Rats Gambit', '[of] ' + source);
 			}
 		},
 		name: "Rats Gambit",
