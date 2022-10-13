@@ -7421,7 +7421,7 @@ export const Items: {[itemid: string]: ItemData} = {
 			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
 			return true;
 		},
-		num: 23-,
+		num: -23,
 		gen: 6,
 		isNonstandard: "Past",
 	},
@@ -7435,7 +7435,7 @@ export const Items: {[itemid: string]: ItemData} = {
 			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
 			return true;
 		},
-		num: 24-,
+		num: -24,
 		gen: 6,
 		isNonstandard: "Past",
 	},
