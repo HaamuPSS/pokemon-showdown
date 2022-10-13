@@ -2365,7 +2365,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		formeOrder: ["Farfetch\u2019d", "Farfetch\u2019d-Mega", "Farfetch\u2019d-Galar"],
 	},
 	farfetchdmega: {
-		num: ,
+		num: 83,
 		name: "Farfetch\u2019d-Mega",
 		baseSpecies: "Farfetch\u2019d",
 		forme: "Mega",
