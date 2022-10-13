@@ -875,6 +875,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		isNonstandard: "Past",
 		tier: "Illegal",
 	},
+	mukalolamega: {
+		isNonstandard: "Past",
+		tier: "PU",
+	},
 	shellder: {
 		tier: "LC",
 	},

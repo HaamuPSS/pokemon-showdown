@@ -7566,4 +7566,18 @@ export const Items: {[itemid: string]: ItemData} = {
 		num: -33,
 		gen: 6,
 	},
+	amukinite: {
+		name: "A-Mukinite",
+		spritenum: 575,
+		megaStone: "Muk-Alola-Mega",
+		megaEvolves: "Muk-Alola",
+		itemUser: ["Muk-Alola"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -34,
+		gen: 6,
+		isNonstandard: "Past",
+	},
 };

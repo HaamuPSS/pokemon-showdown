@@ -518,6 +518,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	mukalola: {
 		name: "Muk-Alola",
 	},
+	mukalolamega: {
+		name: "Muk-Alola-Mega",
+	},
 	shellder: {
 		name: "Shellder",
 	},

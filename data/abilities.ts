@@ -4618,16 +4618,19 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: -13,
 	},
 	ratsgambit: {
-		onAfterMoveSecondary(target, source, move) {
-            if (source && source !== target && move?.flags['contact']) {
-                if (target.item || target.switchFlag || target.forceSwitchFlag || source.switchFlag === true) {
-                    return;
+		onBasePower(basePower, source, target, move) {
+            const item = target.getItem();
+            if (!this.singleEvent('TakeItem', item, target.itemState, target, target, move, item)) return;
+            if (item.id) {
+                return this.chainModify(1.5);
+            }
+        },
+        onAfterHit(target, source) {
+            if (source.hp) {
+                const item = target.takeItem();
+                if (item) {
+                    this.add('-enditem', target, item.name, '[from] ability: Rats Gambit', '[of] ' + source);
                 }
-                const yourItem = source.takeItem(target);
-                if (!yourItem) {
-                    return;
-                }
-                this.add('-enditem', target, item.name, '[from] ability: Rats Gambit', '[of] ' + source);
             }
         },
         name: "Rats Gambit",
@@ -4701,5 +4704,15 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		name: "Executioner",
 		rating: 3,
 		num: -20,
+	},
+	pride: {
+		onDamagingHit(damage, target, source, move) {
+			if (this.checkMoveMakesContact(move, source, target)) {
+				source.addVolatile('attract', this.effectState.target);
+			}
+		},
+		name: "Pride",
+		rating: 0.5,
+		num: 56,
 	},
 };
