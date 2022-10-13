@@ -489,6 +489,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		isNonstandard: "Past",
 		tier: "Illegal",
 	},
+	venomothmega: {
+		isNonstandard: "Past",
+		tier: "PU",
+	},
 	diglett: {
 		tier: "LC",
 	},
@@ -533,6 +537,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "(PU)",
 		doublesTier: "(DUU)",
 	},
+	persianmega: {
+		isNonstandard: "Past",
+		tier: "PU",
+	},
 	persianalola: {
 		randomBattleMoves: ["darkpulse", "hypnosis", "nastyplot", "thunderbolt"],
 		randomBattleLevel: 82,
@@ -540,6 +548,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		randomDoubleBattleLevel: 88,
 		tier: "(PU)",
 		doublesTier: "(DUU)",
+	},
+	persianalolamega: {
+		isNonstandard: "Past",
+		tier: "PU",
 	},
 	perrserker: {
 		randomBattleMoves: ["closecombat", "crunch", "fakeout", "ironhead", "uturn"],
@@ -559,6 +571,14 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		randomDoubleBattleLevel: 88,
 		tier: "(PU)",
 		doublesTier: "DUU",
+	},
+	golduckmegax: {
+		isNonstandard: "Past",
+		tier: "PU",
+	},
+	golduckmegay: {
+		isNonstandard: "Past",
+		tier: "PU",
 	},
 	mankey: {
 		isNonstandard: "Past",
@@ -583,6 +603,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "NU",
 		doublesTier: "DUU",
 	},
+	arcaninemega: {
+		isNonstandard: "Past",
+		tier: "PU",
+	},
 	arcaninehisui: {
 		isNonstandard: "Future",
 		tier: "Illegal",
@@ -600,6 +624,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		randomDoubleBattleLevel: 88,
 		tier: "(PU)",
 		doublesTier: "(DUU)",
+	},
+	poliwrathmega: {
+		isNonstandard: "Past",
+		tier: "PU",
 	},
 	politoed: {
 		randomBattleMoves: ["encore", "icebeam", "protect", "rest", "scald", "toxic"],
@@ -641,6 +669,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "PUBL",
 		doublesTier: "(DUU)",
 	},
+	machampmega: {
+		isNonstandard: "Past",
+		tier: "PU",
+	},
 	machampgmax: {
 		isNonstandard: "Gigantamax",
 		tier: "AG",
@@ -657,6 +689,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	victreebel: {
 		isNonstandard: "Past",
 		tier: "Illegal",
+	},
+	victreebelmega: {
+		isNonstandard: "Past",
+		tier: "PU",
 	},
 	tentacool: {
 		tier: "LC",
@@ -783,6 +819,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "(PU)",
 		doublesTier: "(DUU)",
 	},
+	farfetchmega: {
+		isNonstandard: "Past",
+		tier: "PU",
+	},
 	farfetchdgalar: {
 		tier: "LC",
 	},
@@ -802,6 +842,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	dodrio: {
 		isNonstandard: "Past",
 		tier: "Illegal",
+	},
+	dodriomega: {
+		isNonstandard: "Past",
+		tier: "PU",
 	},
 	seel: {
 		isNonstandard: "Past",

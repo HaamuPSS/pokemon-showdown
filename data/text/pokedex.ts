@@ -299,6 +299,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	venomoth: {
 		name: "Venomoth",
 	},
+	venomothmega: {
+		name: "Venomoth-Mega",
+	},
 	diglett: {
 		name: "Diglett",
 	},
@@ -326,14 +329,26 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	persian: {
 		name: "Persian",
 	},
+	persianmega: {
+		name: "Persian-Mega",
+	},
 	persianalola: {
 		name: "Persian-Alola",
+	},
+	persianalolamega: {
+		name: "Persian-Alola-Mega",
 	},
 	psyduck: {
 		name: "Psyduck",
 	},
 	golduck: {
 		name: "Golduck",
+	},
+	goluduckmegax: {
+		name: "Golduck-Mega-X",
+	},
+	golduckmegay: {
+		name: "Golduck-Mega-Y",
 	},
 	mankey: {
 		name: "Mankey",
@@ -347,6 +362,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	arcanine: {
 		name: "Arcanine",
 	},
+	arcaninemega: {
+		name: "Arcanine-Mega",
+	},
 	poliwag: {
 		name: "Poliwag",
 	},
@@ -355,6 +373,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	},
 	poliwrath: {
 		name: "Poliwrath",
+	},
+	poliwrathmega: {
+		name: "Poliwrath-Mega",
 	},
 	abra: {
 		name: "Abra",
@@ -377,6 +398,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	machamp: {
 		name: "Machamp",
 	},
+	machampmega: {
+		name: "Machamp-Mega",
+	},
 	machampgmax: {
 		name: "Machamp-Gmax",
 	},
@@ -388,6 +412,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	},
 	victreebel: {
 		name: "Victreebel",
+	},
+	victreebelmega: {
+		name: "Victreebel-Mega",
 	},
 	tentacool: {
 		name: "Tentacool",
@@ -455,6 +482,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	farfetchd: {
 		name: "Farfetch\u2019d",
 	},
+	farfetchdmega: {
+		name: "Farfetch\u2019d-Mega",
+	},
 	farfetchdgalar: {
 		name: "Farfetch\u2019d-Galar",
 	},
@@ -463,6 +493,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	},
 	dodrio: {
 		name: "Dodrio",
+	},
+	dodriomega: {
+		name: "Dodrio-Mega",
 	},
 	seel: {
 		name: "Seel",
