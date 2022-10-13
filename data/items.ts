@@ -7551,4 +7551,19 @@ export const Items: {[itemid: string]: ItemData} = {
 		gen: 6,
 		isNonstandard: "Past",
 	},
+	megaleek: {
+		name: "Mega Leek",
+		spritenum: 475,
+		megaStone: "Farfetch\u2019d-Mega",
+		megaEvolves: "Farfetch\u2019d",
+		itemUser: ["Farfetch\u2019d"],
+		onModifyCritRatio(critRatio, user) {
+			if (["farfetchd", "sirfetchd", "farfetchdmega"].includes(this.toID(user.baseSpecies.baseSpecies))) {
+				return critRatio + 2;
+			}
+		},
+		itemUser: ["Farfetch\u2019d", "Farfetch\u2019d-Mega", "Farfetch\u2019d-Galar", "Sirfetch\u2019d"],
+		num: -33,
+		gen: 6,
+	},
 };

@@ -2376,7 +2376,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		weightkg: 15,
 		color: "Brown",
 		eggGroups: ["Flying", "Field"],
-		requiredItem: "Leek",
+		requiredItem: "Mega Leek",
 	},
 	farfetchdgalar: {
 		num: 83,
