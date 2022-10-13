@@ -4628,4 +4628,72 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 2,
 		num: -14,
 	},
+	proudmind: {
+		onModifySpAPriority: 5,
+		onModifySpA(spa) {
+			return this.chainModify(2);
+		},
+		name: "Proud Mind",
+		rating: 5,
+		num: -15,
+	},
+	expertise: {
+		onModifyPriority(priority, pokemon, target, move) {
+			if (move?.type != 'Water') return priority + 1;
+		},
+		name: "Expertise",
+		rating: 3,
+		num: -16,
+	},
+	waveform: {
+		onModifyPriority(priority, pokemon, target, move) {
+			if (move?.type === 'Water' || move?.type === 'Psychic') return priority + 1;
+		},
+		name: "Waveform",
+		rating: 3,
+		num: -17,
+	},
+	solidmane: {
+		onSourceModifyDamage(damage, source, target, move) {
+			if (target.getMoveHitData(move).typeMod = 0) {
+				this.debug('Solid Mane neutralize');
+				return this.chainModify(0.75);
+			}
+		},
+		isBreakable: true,
+		name: "Solid Mane",
+		rating: 3,
+		num: -18,
+	},
+	dynamo: {
+		// upokecenter says this is implemented as an added secondary effect
+		onModifyMove(move) {
+			if (!move?.flags['contact'] || move.target === 'self') return;
+			if (!move.secondaries) {
+				move.secondaries = [];
+			}
+			move.secondaries.push({
+				chance: 100,
+				volatileStatus: 'confusion',
+				ability: this.dex.abilities.get('dynamo'),
+			});
+		},
+		name: "Dynamo",
+		rating: 2,
+		num: -19,
+	},
+	executioner: {
+		onBasePowerPriority: 30,
+		onBasePower(basePower, attacker, defender, move) {
+			const basePowerAfterMultiplier = this.modify(basePower, this.event.modifier);
+			this.debug('Base Power: ' + basePowerAfterMultiplier);
+			if (defender.hp * 2 <= defender.maxhp) {
+				this.debug('Executioner boost');
+				return this.chainModify(2);
+			}
+		},
+		name: "Executioner",
+		rating: 3,
+		num: -20,
+	},
 };
