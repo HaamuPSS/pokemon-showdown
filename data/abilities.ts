@@ -4618,6 +4618,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: -13,
 	},
 	ratsgambit: {
+		onBasePowerPriority: 21,
 		onBasePower(basePower, source, target, move) {
             const item = target.getItem();
             if (!this.singleEvent('TakeItem', item, target.itemState, target, target, move, item)) return;
