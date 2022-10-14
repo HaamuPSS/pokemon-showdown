@@ -4618,7 +4618,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: -13,
 	},
 	ratsgambit: {
-		onAfterHit(damage, target, source, move) {
+		onDamagingHit(damage, target, source, move) {
 			if (this.checkMoveMakesContact(move, source, target, true)) {
 				this.add('-ability', target, 'Rats Gambit');
 				const item = target.takeItem();
