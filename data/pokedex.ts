@@ -935,7 +935,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		forme: "Mega",
 		types: ["Electric", "Psychic"],
 		baseStats: {hp: 60, atk: 85, def: 50, spa: 155, spd: 85, spe: 150},
-		abilities: {0: "Energy Burst"},
+		abilities: {0: "Full Energy"},
 		heightm: 0.7,
 		weightkg: 21,
 		color: "Brown",
@@ -2536,8 +2536,6 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 	mukalola: {
 		num: -72,
 		name: "Muk-Alola",
-		baseSpecies: "Muk",
-		forme: "Alola",
 		types: ["Poison", "Dark"],
 		baseStats: {hp: 105, atk: 105, def: 75, spa: 65, spd: 100, spe: 50},
 		abilities: {0: "Poison Touch", 1: "Gluttony", H: "Power of Alchemy"},
