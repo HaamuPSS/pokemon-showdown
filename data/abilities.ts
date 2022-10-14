@@ -4627,7 +4627,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 					target.item = yourItem.id;
 					return;
 				}
-				this.add('-item', source, yourItem, '[from]' ability: Rats Gambit, '[of]' + source);
+				this.add('-item', source, yourItem, '[from]', ability: Rats Gambit, '[of]' + source);
 			}
 		},
 		name: "Rats Gambit",
