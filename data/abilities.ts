@@ -4708,22 +4708,46 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 0.5,
 		num: -21,
 	},
-	energyburst: {
-	onBasePowerPriority: 30,
-	onBasePower(basePower, attacker, defender, move) {
-		const basePowerAfterMultiplier = this.modify(basePower, this.event.modifier);
-		this.debug('Base Power: ' + basePowerAfterMultiplier);
-		let ratio = Math.floor(attacker.getStat('spe') / defender.getStat('spe'));
-		if (!isFinite(ratio)) ratio = 0;
-			if ratio >== 4
-				return this.chainModify(2);
-			if ratio >== 3
-				return this.chainModify(1.5);
-			if ratio >== 2
-				return this.chainModify(1.25);
+	fullenergy: {
+		onStart(pokemon) {
+			pokemon.abilityState.choiceLock = "";
 		},
-		name: "Energy Burst",
-		rating: 3,
+		onBeforeMove(pokemon, target, move) {
+			if (move.isZOrMaxPowered || move.id === 'struggle') return;
+			if (pokemon.abilityState.choiceLock && pokemon.abilityState.choiceLock !== move.id) {
+				// Fails unless ability is being ignored (these events will not run), no PP lost.
+				this.addMove('move', pokemon, move.name);
+				this.attrLastMove('[still]');
+				this.debug("Disabled by Full Energy");
+				this.add('-fail', pokemon);
+				return false;
+			}
+		},
+		onModifyMove(move, pokemon) {
+			if (pokemon.abilityState.choiceLock || move.isZOrMaxPowered || move.id === 'struggle') return;
+			pokemon.abilityState.choiceLock = move.id;
+		},
+		onModifySpAPriority: 1,
+		onModifySpA(spa, pokemon) {
+			if (pokemon.volatiles['dynamax']) return;
+			// PLACEHOLDER
+			this.debug('Full Energy SpA Boost');
+			return this.chainModify(1.5);
+		},
+		onDisableMove(pokemon) {
+			if (!pokemon.abilityState.choiceLock) return;
+			if (pokemon.volatiles['dynamax']) return;
+			for (const moveSlot of pokemon.moveSlots) {
+				if (moveSlot.id !== pokemon.abilityState.choiceLock) {
+					pokemon.disableMove(moveSlot.id, false, this.effectState.sourceEffect);
+				}
+			}
+		},
+		onEnd(pokemon) {
+			pokemon.abilityState.choiceLock = "";
+		},
+		name: "Full Energy",
+		rating: 4.5,
 		num: -22,
 	},
 };
