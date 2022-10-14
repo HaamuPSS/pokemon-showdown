@@ -4618,8 +4618,8 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: -13,
 	},
 	ratsgambit: {
-		onDamagingHit(damage, target, source, move) {
-			if (this.checkMoveMakesContact(move, source, target, true)) {
+		onAfterMove(pokemon, target, move) {
+			if (!move?.flags['contact'] || move.target === 'self') {
 				this.add('-ability', target, 'Rats Gambit');
 				const item = target.takeItem();
 				if (item) {
