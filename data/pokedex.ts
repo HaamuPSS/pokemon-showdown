@@ -2552,7 +2552,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 	},
 	mukalolamega: {
 		num: -72,
-		name: "Muka-Alola-Mega",
+		name: "Muk-Alola-Mega",
 		baseSpecies: "Muk-Alola",
 		forme: "Mega",
 		types: ["Poison", "Dark"],
