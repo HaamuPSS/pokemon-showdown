@@ -4706,6 +4706,24 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		},
 		name: "Pride",
 		rating: 0.5,
-		num: 56,
+		num: -21,
+	},
+	energyburst: {
+	onBasePowerPriority: 30,
+	onBasePower(basePower, attacker, defender, move) {
+		const basePowerAfterMultiplier = this.modify(basePower, this.event.modifier);
+		this.debug('Base Power: ' + basePowerAfterMultiplier);
+		let ratio = Math.floor(attacker.getStat('spe') / defender.getStat('spe'));
+		if (!isFinite(ratio)) ratio = 0;
+			if ratio >== 4
+				return this.chainModify(2);
+			if ratio >== 3
+				return this.chainModify(1.5);
+			if ratio >== 2
+				return this.chainModify(1.25);
+		},
+		name: "Energy Burst",
+		rating: 3,
+		num: -22,
 	},
 };
