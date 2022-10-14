@@ -4619,10 +4619,11 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 	},
 	ratsgambit: {
 		onDamagingHit(damage, target, source, move) {
-			if (source.hp) {
+			if (this.checkMoveMakesContact(move, source, target, true)) {
+				this.add('-ability', target, 'Rats Gambit');
 				const item = target.takeItem();
 				if (item) {
-					this.add('-enditem', target, item.name, '[from] move: Rats Gambit', '[of] ' + source);
+					this.add('-enditem', target, item.name, '[from] ability: Rats Gambit', '[of] ' + source);
 				}
 			}
 		},
