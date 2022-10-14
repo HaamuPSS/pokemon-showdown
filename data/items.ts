@@ -7580,4 +7580,18 @@ export const Items: {[itemid: string]: ItemData} = {
 		gen: 6,
 		isNonstandard: "Past",
 	},
+	araichunite: {
+		name: "A-Raichunite",
+		spritenum: 575,
+		megaStone: "Raichu-Alola-Mega",
+		megaEvolves: "Raichu-Alola",
+		itemUser: ["Raichu-Alola"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -35,
+		gen: 6,
+		isNonstandard: "Past",
+	},
 };

@@ -293,6 +293,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "PUBL",
 		doublesTier: "(DUU)",
 	},
+	raichualolamega: {
+		isNonstandard: "Past",
+		tier: "PU",
+	},
 	sandshrew: {
 		tier: "LC",
 	},

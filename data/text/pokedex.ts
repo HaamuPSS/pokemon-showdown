@@ -188,6 +188,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	raichualola: {
 		name: "Raichu-Alola",
 	},
+	raichualolamega: {
+		name: "Raichu-Alola-Mega",
+	},
 	sandshrew: {
 		name: "Sandshrew",
 	},
