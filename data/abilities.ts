@@ -4618,26 +4618,18 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: -13,
 	},
 	ratsgambit: {
-		onBasePowerPriority: 21,
-		onBasePower(basePower, source, target, move) {
-            const item = target.getItem();
-            if (!this.singleEvent('TakeItem', item, target.itemState, target, target, move, item)) return;
-            if (item.id) {
-                return this.chainModify(1.5);
-            }
-        },
-        onAfterHit(target, source) {
-            if (source.hp) {
-                const item = target.takeItem();
-                if (item) {
-                    this.add('-enditem', target, item.name, '[from] ability: Rats Gambit', '[of] ' + source);
-                }
-            }
-        },
-        name: "Rats Gambit",
-        rating: 2,
-        num: -14,
-    },
+		onDamagingHit(damage, target, source, move) {
+			if (source.hp) {
+				const item = target.takeItem();
+				if (item) {
+					this.add('-enditem', target, item.name, '[from] move: Rats Gambit', '[of] ' + source);
+				}
+			}
+		},
+		name: "Rats Gambit",
+		rating: 3,
+		num: -14,
+	},
 	proudmind: {
 		onModifySpAPriority: 5,
 		onModifySpA(spa) {
