@@ -4623,7 +4623,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 			if (target !== source && move.category !== 'Status') {
 				const yourItem = target.takeItem(source);
 				if (!yourItem) return;
-				this.add('-enditem', source, yourItem, '[from] ability: Rats Gambit', '[of] ' + source);
+				this.add('-enditem', target, yourItem, '[from] ability: Rats Gambit', '[of] ' + source);
 			}
 		},
 		name: "Rats Gambit",
