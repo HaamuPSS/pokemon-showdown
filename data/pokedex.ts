@@ -913,8 +913,6 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 	raichualola: {
 		num: -73,
 		name: "Raichu-Alola",
-		baseSpecies: "Raichu",
-		forme: "Alola",
 		types: ["Electric", "Psychic"],
 		baseStats: {hp: 60, atk: 85, def: 50, spa: 95, spd: 85, spe: 110},
 		abilities: {0: "Surge Surfer"},
@@ -926,7 +924,7 @@ export const Pokedex: {[speciesid: string]: SpeciesData} = {
 		evoItem: "Thunder Stone",
 		eggGroups: ["Field", "Fairy"],
 		otherFormes: ["Raichu-Alola-Mega"],
-		formeOrder: ["Raichu", "Raichu-Alola-Mega"],
+		formeOrder: ["Raichu-Alola", "Raichu-Alola-Mega"],
 	},
 	raichualolamega: {
 		num: -73,

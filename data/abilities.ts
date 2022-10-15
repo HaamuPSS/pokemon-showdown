@@ -4751,7 +4751,7 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		num: -22,
 	},
 	treasurehunter: {
-		onUpdate(pokemon) {
+		onUpdate(pokemon, target, source) {
 			if (!pokemon.isStarted || this.effectState.gaveUp) return;
 
 			const yourItem = source.takeItem(target);
