@@ -314,6 +314,9 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	dugtrio: {
 		name: "Dugtrio",
 	},
+	dugtriomega: {
+		name: "Dugtrio-Mega",
+	},
 	dugtrioalola: {
 		name: "Dugtrio-Alola",
 	},

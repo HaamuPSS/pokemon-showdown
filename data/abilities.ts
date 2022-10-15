@@ -4750,4 +4750,22 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 4.5,
 		num: -22,
 	},
+	treasurehunter: {
+		onUpdate(pokemon) {
+			if (!pokemon.isStarted || this.effectState.gaveUp) return;
+
+			const yourItem = source.takeItem(target);
+			if (!yourItem) {
+				return;
+			}
+			if (!target.setItem(yourItem)) {
+				source.item = yourItem.id;
+				return;
+			}
+			this.add('-item', target, yourItem, '[from] ability: Pickpocket', '[of] ' + source);
+		},
+		name: "Treasure Hunter",
+		rating: 2.5,
+		num: 36,
+	},
 };

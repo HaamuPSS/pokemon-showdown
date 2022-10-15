@@ -511,6 +511,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "(PU)",
 		doublesTier: "(DUU)",
 	},
+	dugtriomega: {
+		isNonstandard: "Past",
+		tier: "PU",
+	},
 	dugtrioalola: {
 		randomBattleMoves: ["earthquake", "ironhead", "stealthrock", "stoneedge", "suckerpunch"],
 		randomBattleLevel: 82,
