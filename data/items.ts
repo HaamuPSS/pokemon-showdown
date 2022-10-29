@@ -7622,4 +7622,32 @@ export const Items: {[itemid: string]: ItemData} = {
 		gen: 6,
 		isNonstandard: "Past",
 	},
+	exeggutite: {
+		name: "Exeggutite",
+		spritenum: 575,
+		megaStone: "Exeggutor-Mega",
+		megaEvolves: "Exeggutor",
+		itemUser: ["Exeggutor"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -38,
+		gen: 6,
+		isNonstandard: "Past",
+	},
+	aexeggutite: {
+		name: "A-Exeggutite",
+		spritenum: 575,
+		megaStone: "Exeggutor-Alola-Mega",
+		megaEvolves: "Exeggutor-Alola",
+		itemUser: ["Exeggutor-Alola"],
+		onTakeItem(item, source) {
+			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
+			return true;
+		},
+		num: -38,
+		gen: 6,
+		isNonstandard: "Past",
+	},
 };

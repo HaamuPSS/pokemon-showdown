@@ -581,8 +581,14 @@ export const PokedexText: {[k: string]: PokedexText} = {
 	exeggutor: {
 		name: "Exeggutor",
 	},
+	exeggutormega: {
+		name: "Exeggutor-Mega",
+	},
 	exeggutoralola: {
 		name: "Exeggutor-Alola",
+	},
+	exeggutoralolamega: {
+		name: "Exeggutor-Alola-Mega",
 	},
 	cubone: {
 		name: "Cubone",

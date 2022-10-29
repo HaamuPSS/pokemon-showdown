@@ -997,6 +997,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "(PU)",
 		doublesTier: "(DUU)",
 	},
+	exeggutormega: {
+		isNonstandard: "Past",
+		tier: "PU",
+	},
 	exeggutoralola: {
 		randomBattleMoves: ["dracometeor", "flamethrower", "gigadrain", "leafstorm", "trickroom"],
 		randomBattleLevel: 87,
@@ -1004,6 +1008,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		randomDoubleBattleLevel: 88,
 		tier: "PUBL",
 		doublesTier: "(DUU)",
+	},
+	exeggutoralolamega: {
+		isNonstandard: "Past",
+		tier: "PU",
 	},
 	cubone: {
 		tier: "LC",
