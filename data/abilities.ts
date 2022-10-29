@@ -4766,6 +4766,22 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		},
 		name: "Treasure Hunter",
 		rating: 2.5,
-		num: 36,
+		num: -23,
+	},
+	boneplating: {
+		onSourceModifyDamage(damage, source, target, move) {
+			if (target.getMoveHitData(move).typeMod > 0) {
+				this.debug('Bone Plating neutralize');
+				return this.chainModify(0.75);
+			}
+		},
+		onModifySecondaries(secondaries) {
+			this.debug('Bone Plating prevent secondary');
+			return secondaries.filter(effect => !!(effect.self || effect.dustproof));
+		},
+		isBreakable: true,
+		name: "Bone Plating",
+		rating: 3,
+		num: -24,
 	},
 };
