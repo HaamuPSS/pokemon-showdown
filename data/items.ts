@@ -7646,8 +7646,24 @@ export const Items: {[itemid: string]: ItemData} = {
 			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
 			return true;
 		},
-		num: -38,
+		num: -39,
 		gen: 6,
 		isNonstandard: "Past",
+	},
+	megathickclub: {
+		name: "Mega Thick Club",
+		spritenum: 475,
+		megaStone: ["Marowak-Mega", "Marowak-Alola-Mega"],
+		megaEvolves: ["Marowak", "Marowak-Alola"],
+		itemUser: ["Marowak", "Marowak-Alola"],
+		onModifyAtkPriority: 1,
+		onModifyAtk(atk, pokemon) {
+			if (pokemon.baseSpecies.baseSpecies === 'Marowak' || pokemon.baseSpecies.baseSpecies === 'Marowak-Alola') {
+				return this.chainModify(2);
+			}
+		},
+		itemUser: ["Marowak", "Marowak-Mega", "Marowak-Alola", "Marowak-Alola-Mega"],
+		num: -40,
+		gen: 6,
 	},
 };

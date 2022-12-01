@@ -4784,4 +4784,16 @@ export const Abilities: {[abilityid: string]: AbilityData} = {
 		rating: 3,
 		num: -24,
 	},
+	reaper: {
+		onTryHit(target, source, move) {
+			if (this.checkMoveMakesContact(move, source, target, true) && target !== source) {
+				this.add('-immune', target, '[from] ability: Reaper');
+				return null;
+			}
+		},
+		isBreakable: true,
+		name: "Reaper",
+		rating: 1.5,
+		num: -24,
+	},
 };

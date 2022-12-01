@@ -1024,6 +1024,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 		tier: "(PU)",
 		doublesTier: "(DUU)",
 	},
+	marowakmega: {
+		isNonstandard: "Past",
+		tier: "PU",
+	},
 	marowakalola: {
 		randomBattleMoves: ["earthquake", "flamecharge", "flareblitz", "poltergeist", "stealthrock", "stoneedge"],
 		randomBattleLevel: 84,
@@ -1035,6 +1039,10 @@ export const FormatsData: {[k: string]: SpeciesFormatsData} = {
 	marowakalolatotem: {
 		isNonstandard: "Past",
 		tier: "Illegal",
+	},
+	marowakalolamega: {
+		isNonstandard: "Past",
+		tier: "PU",
 	},
 	tyrogue: {
 		tier: "LC",
