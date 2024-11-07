@@ -5789,7 +5789,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			if (!pokemon.isStarted || this.effectState.gaveUp) return;
 
 			const possibleTargets = pokemon.adjacentFoes().filter(
-				target => !target.getItem().flags['notrace'] && target.item !== 'noitem'
+				target => target.item !== 'noitem'
 			);
 			if (!possibleTargets.length) return;
 
