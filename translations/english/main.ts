@@ -18,15 +18,15 @@ export const translations: Translations = {
 		"+ <strong>Global Voice</strong> - They can use ! commands like !groups": "",
 		"% <strong>Global Driver</strong> - The above, and they can also lock users and check for alts": "",
 		"@ <strong>Global Moderator</strong> - The above, and they can globally ban users": "",
-		"* <strong>Global Bot</strong> - Like Moderator, but makes it clear that this user is a bot": "",
-		"&amp; <strong>Global Administrator</strong> -  They can do anything, like change what this message says and promote users globally": "",
+		"* <strong>Global Bot</strong> - An automated account that can use HTML anywhere": "",
+		"~ <strong>Global Administrator</strong> -  They can do anything, like change what this message says and promote users globally": "",
 
 		"<strong>Room ranks</strong>": "",
 		"^ <strong>Prize Winner</strong> - They don't have any powers beyond a symbol.": "",
 		"+ <strong>Voice</strong> - They can use ! commands like !groups": "",
 		"% <strong>Driver</strong> - The above, and they can mute and warn": "",
 		"@ <strong>Moderator</strong> - The above, and they can room ban users": "",
-		"* <strong>Bot</strong> - Like Moderator, but makes it clear that this user is a bot": "",
+		"* <strong>Bot</strong> - An automated account that can mute, warn, and use HTML": "",
 		"# <strong>Room Owner</strong> - They are leaders of the room and can almost totally control it": "",
 
 		"/help OR /h OR /? - Gives you help.": "",
@@ -42,7 +42,7 @@ export const translations: Translations = {
 		"MODERATOR COMMANDS": "",
 		"ADMIN COMMANDS": "",
 
-		"(replace / with ! to broadcast. Broadcasting requires: + % @ # &)": "",
+		"(replace / with ! to broadcast. Broadcasting requires: + % @ # ~)": "",
 
 		"<strong>Room punishments</strong>:": "",
 		"<strong>warn</strong> - Displays a popup with the rules.": "",

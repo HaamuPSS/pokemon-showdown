@@ -55,12 +55,12 @@ export const Scripts: ModdedBattleScriptsData = {
 
 			// Handle boosting items
 			if (
-				(['Cubone', 'Marowak'].includes(this.species.name) && this.item === 'thickclub' && statName === 'atk') ||
-				(this.species.name === 'Pikachu' && this.item === 'lightball' && statName === 'spa')
+				(['Cubone', 'Marowak'].includes(this.baseSpecies.name) && this.item === 'thickclub' && statName === 'atk') ||
+				(this.baseSpecies.name === 'Pikachu' && this.item === 'lightball' && statName === 'spa')
 			) {
 				stat *= 2;
-			} else if (this.species.name === 'Ditto' && this.item === 'metalpowder' && ['def', 'spd'].includes(statName)) {
-				stat *= 1.5;
+			} else if (this.baseSpecies.name === 'Ditto' && this.item === 'metalpowder' && ['def', 'spd'].includes(statName)) {
+				stat = Math.floor(stat * 1.5);
 			}
 
 			return stat;
@@ -89,10 +89,10 @@ export const Scripts: ModdedBattleScriptsData = {
 	},
 	actions: {
 		inherit: true,
-		runMove(moveOrMoveName, pokemon, targetLoc, sourceEffect) {
+		runMove(moveOrMoveName, pokemon, targetLoc, options) {
 			let move = this.dex.getActiveMove(moveOrMoveName);
 			let target = this.battle.getTarget(pokemon, move, targetLoc);
-			if (!sourceEffect && move.id !== 'struggle') {
+			if (!options?.sourceEffect && move.id !== 'struggle') {
 				const changedMove = this.battle.runEvent('OverrideAction', pokemon, target, move);
 				if (changedMove && changedMove !== true) {
 					move = this.dex.getActiveMove(changedMove);
@@ -135,7 +135,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				}
 			}
 			pokemon.moveUsed(move);
-			this.battle.actions.useMove(move, pokemon, target, sourceEffect);
+			this.battle.actions.useMove(move, pokemon, {target, sourceEffect: options?.sourceEffect});
 			this.battle.singleEvent('AfterMove', move, null, pokemon, target, move);
 			if (!move.selfSwitch && pokemon.side.foe.active[0].hp) this.battle.runEvent('AfterMoveSelf', pokemon, target, move);
 		},
@@ -158,6 +158,22 @@ export const Scripts: ModdedBattleScriptsData = {
 
 			if (!this.battle.singleEvent('Try', move, null, pokemon, target, move)) {
 				return false;
+			}
+
+			if (move.target === 'all' || move.target === 'foeSide' || move.target === 'allySide' || move.target === 'allyTeam') {
+				if (move.target === 'all') {
+					hitResult = this.battle.runEvent('TryHitField', target, pokemon, move);
+				} else {
+					hitResult = this.battle.runEvent('TryHitSide', target, pokemon, move);
+				}
+				if (!hitResult) {
+					if (hitResult === false) {
+						this.battle.add('-fail', pokemon);
+						this.battle.attrLastMove('[still]');
+					}
+					return false;
+				}
+				return this.moveHit(target, pokemon, move);
 			}
 
 			hitResult = this.battle.runEvent('Invulnerability', target, pokemon, move);
@@ -286,7 +302,7 @@ export const Scripts: ModdedBattleScriptsData = {
 			}
 
 			if (move.recoil && move.totalDamage) {
-				this.battle.damage(this.calcRecoilDamage(move.totalDamage, move), pokemon, target, 'recoil');
+				this.battle.damage(this.calcRecoilDamage(move.totalDamage, move, pokemon), pokemon, target, 'recoil');
 			}
 			return damage;
 		},
@@ -529,11 +545,11 @@ export const Scripts: ModdedBattleScriptsData = {
 			// Checking for the move's Critical Hit ratio
 			let critRatio = this.battle.runEvent('ModifyCritRatio', source, target, move, move.critRatio || 0);
 			critRatio = this.battle.clampIntRange(critRatio, 0, 5);
-			const critMult = [0, 16, 8, 4, 3, 2];
+			const critMult = [0, 17, 32, 64, 85, 128];
 			let isCrit = move.willCrit || false;
 			if (typeof move.willCrit === 'undefined') {
 				if (critRatio) {
-					isCrit = this.battle.randomChance(1, critMult[critRatio]);
+					isCrit = this.battle.random(256) < critMult[critRatio];
 				}
 			}
 
@@ -690,7 +706,7 @@ export const Scripts: ModdedBattleScriptsData = {
 				}
 			}
 
-			// Apply random factor is damage is greater than 1, except for Flail and Reversal
+			// Apply random factor if damage is greater than 1, except for Flail and Reversal
 			if (!move.noDamageVariance && damage > 1) {
 				damage *= this.battle.random(217, 256);
 				damage = Math.floor(damage / 255);

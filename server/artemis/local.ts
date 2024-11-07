@@ -5,7 +5,7 @@
  */
 
 import * as child_process from 'child_process';
-import {ProcessManager, Streams, Utils, Repl} from '../../lib';
+import {ProcessManager, Streams, Utils, Repl, FS} from '../../lib';
 import {Config} from '../config-loader';
 import {toID} from '../../sim/dex-data';
 
@@ -15,7 +15,7 @@ class ArtemisStream extends Streams.ObjectReadWriteStream<string> {
 	constructor() {
 		super();
 		this.process = child_process.spawn('python3', [
-			'-u', __dirname + '/model.py', Config.debugartemisprocesses ? "debug" : "",
+			'-u', FS('server/artemis/model.py').path, Config.debugartemisprocesses ? "debug" : "",
 		].filter(Boolean));
 		this.listen();
 	}
@@ -75,9 +75,18 @@ export const PM = new ProcessManager.StreamProcessManager(module, () => new Arte
 
 export class LocalClassifier {
 	static readonly PM = PM;
+	static readonly ATTRIBUTES: Record<string, unknown> = {
+		sexual_explicit: {},
+		severe_toxicity: {},
+		toxicity: {},
+		obscene: {},
+		identity_attack: {},
+		insult: {},
+		threat: {},
+	};
 	static classifiers: LocalClassifier[] = [];
 	static destroy() {
-		for (const classifier of this.classifiers) classifier.destroy();
+		for (const classifier of this.classifiers) void classifier.destroy();
 		return this.PM.destroy();
 	}
 	/** If stream exists, model is usable */

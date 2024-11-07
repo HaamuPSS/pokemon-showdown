@@ -1,5 +1,6 @@
-import {PokemonEventMethods} from './dex-conditions';
-import {BasicEffect, toID} from './dex-data';
+import type {PokemonEventMethods, ConditionData} from './dex-conditions';
+import {assignMissingFields, BasicEffect, toID} from './dex-data';
+import {Utils} from '../lib';
 
 interface FlingData {
 	basePower: number;
@@ -16,6 +17,9 @@ export type ModdedItemData = ItemData | Partial<Omit<ItemData, 'name'>> & {
 	inherit: true,
 	onCustap?: (this: Battle, pokemon: Pokemon) => void,
 };
+
+export interface ItemDataTable {[itemid: IDEntry]: ItemData}
+export interface ModdedItemDataTable {[itemid: IDEntry]: ModdedItemData}
 
 export class Item extends BasicEffect implements Readonly<BasicEffect> {
 	declare readonly effectType: 'Item';
@@ -99,10 +103,10 @@ export class Item extends BasicEffect implements Readonly<BasicEffect> {
 	declare readonly onEat?: ((this: Battle, pokemon: Pokemon) => void) | false;
 	declare readonly onPrimal?: (this: Battle, pokemon: Pokemon) => void;
 	declare readonly onStart?: (this: Battle, target: Pokemon) => void;
+	declare readonly onEnd?: (this: Battle, target: Pokemon) => void;
 
 	constructor(data: AnyObject) {
 		super(data);
-		data = this;
 
 		this.fullname = `item: ${this.name}`;
 		this.effectType = 'Item';
@@ -122,7 +126,11 @@ export class Item extends BasicEffect implements Readonly<BasicEffect> {
 		this.isPokeball = !!data.isPokeball;
 
 		if (!this.gen) {
-			if (this.num >= 689) {
+			if (this.num >= 1124) {
+				this.gen = 9;
+			} else if (this.num >= 927) {
+				this.gen = 8;
+			} else if (this.num >= 689) {
 				this.gen = 7;
 			} else if (this.num >= 577) {
 				this.gen = 6;
@@ -142,8 +150,12 @@ export class Item extends BasicEffect implements Readonly<BasicEffect> {
 		if (this.onDrive) this.fling = {basePower: 70};
 		if (this.megaStone) this.fling = {basePower: 80};
 		if (this.onMemory) this.fling = {basePower: 50};
+
+		assignMissingFields(this, data);
 	}
 }
+
+const EMPTY_ITEM = Utils.deepFreeze(new Item({name: '', exists: false}));
 
 export class DexItems {
 	readonly dex: ModdedDex;
@@ -156,13 +168,12 @@ export class DexItems {
 
 	get(name?: string | Item): Item {
 		if (name && typeof name !== 'string') return name;
-
-		name = (name || '').trim();
-		const id = toID(name);
+		const id = name ? toID(name.trim()) : '' as ID;
 		return this.getByID(id);
 	}
 
 	getByID(id: ID): Item {
+		if (id === '') return EMPTY_ITEM;
 		let item = this.itemCache.get(id);
 		if (item) return item;
 		if (this.dex.data.Aliases.hasOwnProperty(id)) {
@@ -188,15 +199,11 @@ export class DexItems {
 			if (item.gen > this.dex.gen) {
 				(item as any).isNonstandard = 'Future';
 			}
-			// hack for allowing mega evolution in LGPE
-			if (this.dex.currentMod === 'gen7letsgo' && !item.isNonstandard && !item.megaStone) {
-				(item as any).isNonstandard = 'Past';
-			}
 		} else {
 			item = new Item({name: id, exists: false});
 		}
 
-		if (item.exists) this.itemCache.set(id, item);
+		if (item.exists) this.itemCache.set(id, this.dex.deepFreeze(item));
 		return item;
 	}
 
@@ -206,7 +213,7 @@ export class DexItems {
 		for (const id in this.dex.data.Items) {
 			items.push(this.getByID(id as ID));
 		}
-		this.allCache = items;
+		this.allCache = Object.freeze(items);
 		return this.allCache;
 	}
 }
