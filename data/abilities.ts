@@ -5796,7 +5796,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			const target = this.sample(possibleTargets);
 			const item = target.getItem();
 			if (pokemon.setItem(item)) {
-				this.add('-ability', pokemon, ability, '[from] ability: Treasure Hunter', '[of] ' + target);
+				this.add('-item', pokemon, item, '[from] ability: Treasure Hunter', '[of] ' + target);
 			}
 		},
 		flags: {failroleplay: 1, noreceiver: 1, noentrain: 1, notrace: 1},
