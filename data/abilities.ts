@@ -5661,11 +5661,10 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			this.debug('compoundeyes - enhancing accuracy');
 			return this.chainModify([5325, 4096]);
 		},
-		onBasePowerPriority: 19,
-		onBasePower(basePower, attacker, defender, move) {
-			if (defender.status || defender.hasAbility('comatose'))  {
-				return this.chainModify(1.5);
-			}
+		onBasePowerPriority: 23,
+		onBasePower(basePower, pokemon, target, move) {
+			if (defender.status || defender.hasAbility('comatose')) 
+			return this.chainModify([4915, 4096]);
 		},
 		flags: {},
 		name: "Butterfly Effect",

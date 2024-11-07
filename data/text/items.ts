@@ -2492,7 +2492,7 @@ export const ItemsText: {[id: IDEntry]: ItemText} = {
 		name: "Dugtrinite",
 		desc: "If held by a Dugtrio, this item allows it to Mega Evolve in battle.",
 	},
-	pearsianite: {
+	persianite: {
 		name: "Persianite",
 		desc: "If held by a Persian, this item allows it to Mega Evolve in battle.",
 	},
