@@ -5681,8 +5681,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			if (move.category === 'Special' && !noModifyType.includes(move.id) &&
 				!(move.isZ && move.category !== 'Status') && !(move.name === 'Tera Blast' && pokemon.terastallized)) {
 				move.type = 'Ghost';
-				move.category === 'Physical';
 				move.typeChangerBoosted = this.effect;
+			}
+		},
+		onModifyMove(move, pokemon, target) {
+			if (!target) return;
+			if move.type = 'Ghost' {
+				move.category = 'Physical';
+				move.flags.contact = 1;
 			}
 		},
 		onBasePowerPriority: 23,
