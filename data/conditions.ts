@@ -469,11 +469,11 @@ export const Conditions: import('../sim/dex-conditions').ConditionDataTable = {
 			return -typeMod;
 		},
 		onFieldStart(field, source, effect) {
-			this.add('-weather', 'DeltaStream', '[from] ability: ' + effect, '[of] ' + source);
+			this.add('-weather', 'ShroomTrip', '[from] ability: ' + effect, '[of] ' + source);
 		},
 		onFieldResidualOrder: 1,
 		onFieldResidual() {
-			this.add('-weather', 'DeltaStream', '[upkeep]');
+			this.add('-weather', 'ShroomTrip', '[upkeep]');
 			this.eachEvent('Weather');
 		},
 		onFieldEnd() {
