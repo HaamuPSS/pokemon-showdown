@@ -8124,7 +8124,7 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 	},
 	megathickclub: {
 		name: "Mega Thick Club",
-		name: "Thick Club",
+		name: "Mega Thick Club",
 		spritenum: 491,
 		megaStone: "Marowak-Mega",
 		megaEvolves: "Marowak",

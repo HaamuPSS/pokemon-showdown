@@ -5663,7 +5663,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		},
 		onBasePowerPriority: 23,
 		onBasePower(basePower, pokemon, target, move) {
-			if (defender.status || defender.hasAbility('comatose')) 
+			if (defender.status || defender.hasAbility('comatose'))
 			return this.chainModify([4915, 4096]);
 		},
 		flags: {},
@@ -5685,7 +5685,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		},
 		onModifyMove(move, pokemon, target) {
 			if (!target) return;
-			if move.type = 'Ghost' {
+			if (move.type = 'Ghost') {
 				move.category = 'Physical';
 				move.flags.contact = 1;
 			}
