@@ -5674,11 +5674,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	raisingdread: {
 		onModifyTypePriority: -1,
 		onModifyType(move, pokemon) {
-			const noModifyType = [
-				'judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'terrainpulse', 'weatherball',
-			];
-			if (move.category === 'Special' && !noModifyType.includes(move.id) &&
-				!(move.isZ && move.category !== 'Status') && !(move.name === 'Tera Blast' && pokemon.terastallized)) {
+			if (move.category === 'Special' && !(move.isZ && move.category !== 'Status') &&
+			!(move.name === 'Tera Blast' && pokemon.terastallized)) {
 				move.type = 'Ghost';
 				move.typeChangerBoosted = this.effect;
 			}
@@ -5784,8 +5781,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			if (pokemon.adjacentFoes().some(foeActive => foeActive.item === 'noitem')) {
 				this.effectState.gaveUp = true;
 			}
-		},
-		onUpdate(pokemon) {
+		// },
+		// onUpdate(pokemon) {
 			if (!pokemon.isStarted || this.effectState.gaveUp) return;
 
 			const possibleTargets = pokemon.adjacentFoes().filter(
@@ -5812,5 +5809,67 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		name: "Proud Mind",
 		rating: 5,
 		num: -12,
+	},
+	noremorse: {
+		// This should be applied directly to the stat as opposed to chaining with the others
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (move.accuracy > 100) {
+				this.debug('No Remorse boost');
+				return this.chainModify(1.5);
+			}
+		},
+		onSourceModifyAccuracyPriority: -1,
+		onSourceModifyAccuracy(accuracy, target, source, move) {
+			if (move.accuracy > 100) {
+				return this.chainModify([3277, 4096]);
+			}
+		},
+		flags: {},
+		name: "No Remorse",
+		rating: 3,
+		num: -13,
+	},
+	psychosis: {
+		onModifyMove(move, pokemon) {
+			let totaldef = 0;
+			let totalspd = 0;
+			for (const target of pokemon.foes()) {
+				totaldef += target.getStat('def', false, true);
+				totalspd += target.getStat('spd', false, true);
+			}
+			if (totaldef && totaldef >= totalspd) {
+				move.category = 'Special';
+			} else if (totalspd) {
+				move.category = 'Physical';
+			}
+		},
+		flags: {},
+		name: "Psychosis",
+		rating: 3,
+		num: -14,
+	},
+	monkeyflip: {
+		onModifyMovePriority: -2,
+		onModifyMove(move) {
+			if !(move.isZ && move.category !== 'Status')
+			selfSwitch: true;
+		},
+		flags: {},
+		name: "Monkey Flip",
+		rating: 3,
+		num: -15,
+	},
+	solidmane: {
+		onSourceModifyDamage(damage, source, target, move) {
+			if (target.getMoveHitData(move).typeMod = 0) {
+				this.debug('Solid Mane reduction');
+				return this.chainModify(0.75);
+			}
+		},
+		flags: {breakable: 1},
+		name: "Solid Mane",
+		rating: 3,
+		num: 111,
 	},
 };
