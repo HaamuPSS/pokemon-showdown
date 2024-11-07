@@ -264,6 +264,13 @@ export const DefaultText: {[id: IDEntry]: DefaultText} = {
 	},
 
 	// weather
+	shroomtrip: {
+		weatherName: "Shroom Trip",
+		start: "  Hallucinations are affecting the type effectivenesses!",
+		end: "  The hallucinations have ended!",
+		activate: "  The hallucinations affect the moves effectiveness!",
+		block: "  The hallucinations keep appearing!",
+	},
 	sandstorm: {
 		weatherName: "Sandstorm",
 		start: "  A sandstorm kicked up!",
