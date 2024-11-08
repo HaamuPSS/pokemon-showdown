@@ -847,7 +847,8 @@ export class Pokemon {
 			this.itemState.knockedOff || // Gen 3-4
 			(this.battle.gen >= 5 && !this.isActive) ||
 			(!this.getItem().ignoreKlutz && this.hasAbility('klutz')) ||
-			this.volatiles['embargo'] || this.battle.field.pseudoWeather['magicroom']
+			this.volatiles['embargo'] || this.battle.field.pseudoWeather['magicroom'] ||
+      (this.ability === ('witchdoctor' as ID) && this.status === 'psn')
 		);
 	}
 
@@ -1359,6 +1360,7 @@ export class Pokemon {
 			// Gen 1: Re-Apply burn and para drops.
 			if (this.status === 'par') this.modifyStat!('spe', 0.25);
 			if (this.status === 'brn') this.modifyStat!('atk', 0.5);
+      if (this.status === 'brn' && this.ability === 'witchdoctor') this.modifyStat!('spa', 0.5);
 		}
 		this.speed = this.storedStats.spe;
 		return species;

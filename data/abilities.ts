@@ -5814,14 +5814,14 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		// This should be applied directly to the stat as opposed to chaining with the others
 		onModifyAtkPriority: 5,
 		onModifyAtk(atk, attacker, defender, move) {
-			if (move.accuracy > 100) {
+			if (move.accuracy < 100) {
 				this.debug('No Remorse boost');
 				return this.chainModify(1.5);
 			}
 		},
 		onSourceModifyAccuracyPriority: -1,
 		onSourceModifyAccuracy(accuracy, target, source, move) {
-			if (move.accuracy > 100) {
+			if (move.accuracy < 100) {
 				return this.chainModify([3277, 4096]);
 			}
 		},
@@ -5853,7 +5853,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onModifyMovePriority: -2,
 		onModifyMove(move) {
 			if (move.category !== 'Status')
-			selfSwitch: true;
+			move.selfSwitch = true;
 		},
 		flags: {},
 		name: "Monkey Flip",
@@ -5864,12 +5864,153 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onSourceModifyDamage(damage, source, target, move) {
 			if (target.getMoveHitData(move).typeMod = 0) {
 				this.debug('Solid Mane reduction');
-				return this.chainModify(0.75);
+				return this.chainModify(0.5);
 			}
 		},
 		flags: {breakable: 1},
 		name: "Solid Mane",
 		rating: 3,
-		num: 111,
+		num: -16,
+	},
+	dynamo: {
+		onSourceDamagingHit(damage, target, source, move) {
+			// Despite not being a secondary, Shield Dust / Covert Cloak block Poison Touch's effect
+			if (target.hasAbility('shielddust') || target.hasItem('covertcloak')) return;
+			if (this.checkMoveMakesContact(move, target, source)) {
+				target.trySetStatus('confusion', source);
+			}
+		},
+		flags: {},
+		name: "Dynamo",
+		rating: 3,
+		num: -17,
+	},
+	beasthide: {
+		onTryHit(pokemon, target, move) {
+			if (move.ohko) {
+				this.add('-immune', pokemon, '[from] ability: Beast Hide');
+				return null;
+			}
+		},
+		onDamagePriority: -10,
+		onDamage(damage, target, source, effect) {
+			if (effect?.effectType === 'Move' && damage >= target.hp) {
+				this.add('-activate', target, 'move: Endure');
+				return target.hp - 1;
+			}
+		},
+		flags: {breakable: 1},
+		name: "Beast Hide",
+		rating: 3,
+		num: -18,
+	},
+	executioner: {
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (defender.hp <= defender.maxhp / 2) {
+				this.debug('Executioner boost');
+				return this.chainModify(2);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, attacker, defender, move) {
+			if (defender.hp <= defender.maxhp / 2) {
+				this.debug('Executioner boost');
+				return this.chainModify(2);
+			}
+		},
+		flags: {},
+		name: "Executioner",
+		rating: 3,
+		num: -19,
+	},
+	perfectexecution: {
+		onBasePowerPriority: 21,
+		onBasePower(basePower, pokemon, target, move) {
+			if (move.basePower > 25) return basePower = 100;
+		},
+		name: "Perfect Execution",
+		rating: 3,
+		num: -20,
+	},
+	noxious: {
+		onStart(pokemon, source) {
+			this.add('-start', pokemon, 'move: Heal Block');
+			source.moveThisTurnResult = true;
+		},
+		onDisableMove(pokemon) {
+			for (const moveSlot of pokemon.moveSlots) {
+				if (this.dex.moves.get(moveSlot.id).flags['heal']) {
+					pokemon.disableMove(moveSlot.id);
+				}
+			}
+		},
+		onBeforeMovePriority: 6,
+		onBeforeMove(pokemon, target, move) {
+			if (move.flags['heal'] && !move.isZ && !move.isMax) {
+				this.add('cant', pokemon, 'move: Heal Block', move);
+				return false;
+			}
+		},
+		onModifyMove(move, pokemon, target) {
+			if (move.flags['heal'] && !move.isZ && !move.isMax) {
+				this.add('cant', pokemon, 'move: Heal Block', move);
+				return false;
+			}
+		},
+		onResidualOrder: 20,
+		onEnd(pokemon) {
+			this.add('-end', pokemon, 'move: Heal Block');
+		},
+		onTryHeal(damage, target, source, effect) {
+			if ((effect?.id === 'zpower') || this.effectState.isZ) return damage;
+			return false;
+		},
+		onRestart(target, source, effect) {
+			if (effect?.name === 'Psychic Noise') return;
+
+			this.add('-fail', target, 'move: Heal Block'); // Succeeds to supress downstream messages
+			if (!source.moveThisTurnResult) {
+				source.moveThisTurnResult = false;
+			}
+		},
+		name: "Noxious",
+		rating: 3,
+		num: -21,
+	},
+	subzero: {
+		onDamagingHitOrder: 1,
+		onDamagingHit(damage, target, source, move) {
+			if (this.checkMoveMakesContact(move, source, target, true)) {
+				this.damage(source.baseMaxhp / 8, source, target);
+				this.add('-ability', target, 'Subzero');
+				this.boost({atk: -1}, source, target, null, true);
+				this.boost({def: -1}, source, target, null, true);
+			}
+		},
+		flags: {},
+		name: "subzero",
+		rating: 2.5,
+		num: -22,
+	},
+	witchdoctor: {
+		onDeductPP(target, source) {
+			if (target.status === 'par')
+			return 1;
+		},
+		onResidualOrder: 28,
+		onResidualSubOrder: 2,
+		onResidual(pokemon) {
+			if (!pokemon.hp) return;
+			for (const target of pokemon.foes()) {
+				if (target.status === 'slp' || target.hasAbility('comatose')) {
+					this.damage(target.baseMaxhp / 4, target, pokemon);
+				}
+			}
+		},
+		flags: {},
+		name: "Witch Doctor",
+		rating: 2.5,
+		num: 46,
 	},
 };
