@@ -5852,7 +5852,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	monkeyflip: {
 		onModifyMovePriority: -2,
 		onModifyMove(move) {
-			if !(move.isZ && move.category !== 'Status')
+			if (move.category !== 'Status')
 			selfSwitch: true;
 		},
 		flags: {},
