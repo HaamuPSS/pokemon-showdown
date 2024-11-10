@@ -7994,17 +7994,17 @@ export const Items: import('../sim/dex-items').ItemDataTable = {
 	megaleek: {
 		name: "Mega Leek",
 		spritenum: 475,
-		megaStone: "Farfertchd-Mega",
-		megaEvolves: "Farfetchd",
-		onModifyCritRatio(critRatio, user) {
-			if (["farfetchd", "sirfetchd"].includes(this.toID(user.baseSpecies.baseSpecies))) {
-				return critRatio + 2;
-			}
-		},
+		megaStone: "Farfertch\u2019d-Mega",
+		megaEvolves: "Farfetch\u2019d",
 		itemUser: ["Farfetch\u2019d", "Farfetch\u2019d-Galar", "Farfetch\u2019d-Mega"],
 		onTakeItem(item, source) {
 			if (item.megaEvolves === source.baseSpecies.baseSpecies) return false;
 			return true;
+		},
+		onModifyCritRatio(critRatio, user) {
+			if (["farfetchd", "sirfetchd"].includes(this.toID(user.baseSpecies.baseSpecies))) {
+				return critRatio + 2;
+			}
 		},
 		num: -29,
 		gen: 6,

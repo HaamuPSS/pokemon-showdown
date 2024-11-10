@@ -129,6 +129,12 @@ export const Tags: {[id: IDEntry]: TagData} = {
 		name: "G-Max Move",
 		moveFilter: move => typeof move.isMax === 'string',
 	},
+	// Custom flags
+	hammer: {
+		name: "Hammer",
+		desc: "Affected by Heavy Claws.",
+		moveFilter: move => 'hammer' in move.flags,
+	},
 
 	// Tiers
 	// -----

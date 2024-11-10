@@ -3231,7 +3231,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		name: "Crabhammer",
 		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, metronome: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, metronome: 1, hammer: 1},
 		critRatio: 2,
 		secondary: null,
 		target: "normal",
@@ -4297,7 +4297,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		name: "Dragon Hammer",
 		pp: 15,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, metronome: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, metronome: 1, hammer: 1},
 		secondary: null,
 		target: "normal",
 		type: "Dragon",
@@ -6817,7 +6817,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		name: "Gigaton Hammer",
 		pp: 5,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, metronome: 1, cantusetwice: 1},
+		flags: {protect: 1, mirror: 1, metronome: 1, cantusetwice: 1, hammer: 1},
 		secondary: null,
 		target: "normal",
 		type: "Steel",
@@ -8370,7 +8370,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		name: "Hammer Arm",
 		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, punch: 1, metronome: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, punch: 1, metronome: 1, hammer: 1},
 		self: {
 			boosts: {
 				spe: -1,
@@ -9693,7 +9693,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		name: "Ice Hammer",
 		pp: 10,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, punch: 1, metronome: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, punch: 1, metronome: 1, hammer: 1},
 		self: {
 			boosts: {
 				spe: -1,
@@ -21820,7 +21820,7 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		name: "Wood Hammer",
 		pp: 15,
 		priority: 0,
-		flags: {contact: 1, protect: 1, mirror: 1, metronome: 1},
+		flags: {contact: 1, protect: 1, mirror: 1, metronome: 1, hammer: 1},
 		recoil: [33, 100],
 		secondary: null,
 		target: "normal",
@@ -22084,6 +22084,52 @@ export const Moves: import('../sim/dex-moves').MoveDataTable = {
 		},
 		target: "normal",
 		type: "Ghost",
+		contestType: "Clever",
+	},
+	mindmeld: {
+		num: -1,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		name: "Mindmeld",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1, metronome: 1},
+		volatileStatus: 'mindmeld',
+		condition: {
+			onStart(pokemon, source, effect) {
+				if (effect && ['Mindmeld'].includes(effect.name)) {
+					this.add('-start', pokemon, 'Mindmeld', this.activeMove!.name, '[from] ability: ' + effect.name);
+				} else {
+					this.add('-start', pokemon, 'Mindmeld');
+				}
+			},
+			onRestart(pokemon, source, effect) {
+				if (effect && ['Mindmeld'].includes(effect.name)) {
+					this.add('-start', pokemon, 'Mindmeld', this.activeMove!.name, '[from] ability: ' + effect.name);
+				} else {
+					this.add('-start', pokemon, 'Mindmeld');
+				}
+			},
+			onBasePowerPriority: 9,
+			onBasePower(basePower, attacker, defender, move) {
+				this.debug('mindmeld boost');
+				return this.chainModify(2);
+			},
+			onMoveAborted(pokemon, target, move) {
+				pokemon.removeVolatile('charge');
+			},
+			onAfterMove(pokemon, target, move) {
+				pokemon.removeVolatile('charge');
+			},
+			onEnd(pokemon) {
+				this.add('-end', pokemon, 'Mindmeld', '[silent]');
+			},
+		},
+		secondary: null,
+		target: "self",
+		type: "Psychic",
+		zMove: {boost: {spd: 1}},
 		contestType: "Clever",
 	},
 };

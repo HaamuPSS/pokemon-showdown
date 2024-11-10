@@ -5658,7 +5658,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onSourceModifyAccuracyPriority: -1,
 		onSourceModifyAccuracy(accuracy) {
 			if (typeof accuracy !== 'number') return;
-			this.debug('compoundeyes - enhancing accuracy');
+			this.debug('butterflyeffect - enhancing accuracy');
 			return this.chainModify([5325, 4096]);
 		},
 		onBasePowerPriority: 23,
@@ -5672,6 +5672,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		num: -5,
 	},
 	raisingdread: {
+		// Raises attack on any knock out otherwise works
 		onModifyTypePriority: -1,
 		onModifyType(move, pokemon) {
 			if (move.category === 'Special' && !(move.isZ && move.category !== 'Status') &&
@@ -5711,6 +5712,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		num: -7,
 	},
 	petrificate: {
+		// Works perfectly
 		onStart(pokemon) {
 			let activated = false;
 			for (const target of pokemon.adjacentFoes()) {
@@ -5731,6 +5733,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		num: -8,
 	},
 	nightmare: {
+		// Works perfectly
 		onModifyTypePriority: -1,
 		onModifyType(move, pokemon) {
 			const noModifyType = [
@@ -5752,6 +5755,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		num: -9,
 	},
 	shroomtrip: {
+		// Works perfectly
 		onStart(source) {
 			this.field.setWeather('shroomtrip');
 		},
@@ -5776,8 +5780,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	treasurehunter: {
 		onStart(pokemon) {
-			// n.b. only affects Hackmons
-			// interaction with No Ability is complicated: https://www.smogon.com/forums/threads/pokemon-sun-moon-battle-mechanics-research.3586701/page-76#post-7790209
+			// Kinda works but updates every turn and changes item if opponent swaps, not locked on CHoice items
 			if (pokemon.adjacentFoes().some(foeActive => foeActive.item === 'noitem')) {
 				this.effectState.gaveUp = true;
 			}
@@ -5802,6 +5805,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		num: -11,
 	},
 	proudmind: {
+		// Easy enough, works.
 		onModifySpAPriority: 5,
 		onModifySpA(spa) {
 			return this.chainModify(2);
@@ -5811,7 +5815,8 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		num: -12,
 	},
 	noremorse: {
-		// This should be applied directly to the stat as opposed to chaining with the others
+		// Kinda works but Low Kick does increased damage too?
+		// Cross Chop correctly boosted but also can miss? Change chain modify to 1.5?
 		onModifyAtkPriority: 5,
 		onModifyAtk(atk, attacker, defender, move) {
 			if (move.accuracy < 100) {
@@ -5822,7 +5827,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onSourceModifyAccuracyPriority: -1,
 		onSourceModifyAccuracy(accuracy, target, source, move) {
 			if (move.accuracy < 100) {
-				return this.chainModify([3277, 4096]);
+				return this.chainModify(1.5);
 			}
 		},
 		flags: {},
@@ -5831,6 +5836,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		num: -13,
 	},
 	psychosis: {
+		// Works
 		onModifyMove(move, pokemon) {
 			let totaldef = 0;
 			let totalspd = 0;
@@ -5850,6 +5856,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		num: -14,
 	},
 	monkeyflip: {
+		// Works!!!!!
 		onModifyMovePriority: -2,
 		onModifyMove(move) {
 			if (move.category !== 'Status')
@@ -5874,10 +5881,10 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	dynamo: {
 		onSourceDamagingHit(damage, target, source, move) {
-			// Despite not being a secondary, Shield Dust / Covert Cloak block Poison Touch's effect
+			// Crash on priority confusion but prankster SWAGGER works, why? Changed to addvolatile confusion
 			if (target.hasAbility('shielddust') || target.hasItem('covertcloak')) return;
 			if (this.checkMoveMakesContact(move, target, source)) {
-				target.trySetStatus('confusion', source);
+				target.addVolatile('confusion');
 			}
 		},
 		flags: {},
@@ -5886,6 +5893,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		num: -17,
 	},
 	beasthide: {
+		// Endures every move hit
 		onTryHit(pokemon, target, move) {
 			if (move.ohko) {
 				this.add('-immune', pokemon, '[from] ability: Beast Hide');
@@ -5934,10 +5942,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		num: -20,
 	},
 	noxious: {
-		onStart(pokemon, source) {
-			this.add('-start', pokemon, 'move: Heal Block');
-			source.moveThisTurnResult = true;
-		},
+		//User can't use Heal moves, opponent can
 		onDisableMove(pokemon) {
 			for (const moveSlot of pokemon.moveSlots) {
 				if (this.dex.moves.get(moveSlot.id).flags['heal']) {
@@ -5948,19 +5953,19 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onBeforeMovePriority: 6,
 		onBeforeMove(pokemon, target, move) {
 			if (move.flags['heal'] && !move.isZ && !move.isMax) {
-				this.add('cant', pokemon, 'move: Heal Block', move);
+				this.add('cant', pokemon, 'ability: Noxious', move);
 				return false;
 			}
 		},
 		onModifyMove(move, pokemon, target) {
 			if (move.flags['heal'] && !move.isZ && !move.isMax) {
-				this.add('cant', pokemon, 'move: Heal Block', move);
+				this.add('cant', pokemon, 'ability: Noxious', move);
 				return false;
 			}
 		},
 		onResidualOrder: 20,
 		onEnd(pokemon) {
-			this.add('-end', pokemon, 'move: Heal Block');
+			this.add('-end', pokemon, 'ability: Noxious');
 		},
 		onTryHeal(damage, target, source, effect) {
 			if ((effect?.id === 'zpower') || this.effectState.isZ) return damage;
@@ -5969,7 +5974,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onRestart(target, source, effect) {
 			if (effect?.name === 'Psychic Noise') return;
 
-			this.add('-fail', target, 'move: Heal Block'); // Succeeds to supress downstream messages
+			this.add('-fail', target, 'ability: Noxious'); // Succeeds to supress downstream messages
 			if (!source.moveThisTurnResult) {
 				source.moveThisTurnResult = false;
 			}
@@ -5990,10 +5995,11 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		},
 		flags: {},
 		name: "subzero",
-		rating: 2.5,
+		rating: 3,
 		num: -22,
 	},
 	witchdoctor: {
+		// Does not work at all, only sleep nightmare works
 		onDeductPP(target, source) {
 			if (target.status === 'par')
 			return 1;
@@ -6010,7 +6016,45 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		},
 		flags: {},
 		name: "Witch Doctor",
-		rating: 2.5,
-		num: 46,
+		rating: 3,
+		num: -23,
+	},
+	bonecrusher: {
+		onSourceDamagingHit(damage, target, source, move) {
+			// Copy dynamo and combine with subzero
+			if (target.hasAbility('shielddust') || target.hasItem('covertcloak')) return;
+			if (move.flags['hammer']) {
+				this.add('-ability', target, 'Bonecrusher');
+				this.boost({atk: -1}, source, target, null, true);
+				this.boost({spe: -1}, source, target, null, true);
+			}
+		},
+		flags: {},
+		name: "Bonecrusher",
+		rating: 3,
+		num: -24,
+	},
+	combustion: {
+		onTryMove(target, source, effect) {
+			if (['explosion', 'mindblown', 'mistyexplosion', 'selfdestruct'].includes(effect.id)) {
+				this.attrLastMove('[still]');
+				this.boost({atk: 12});
+			}
+		},
+		flags: {},
+		name: "Combustion",
+		rating: 3,
+		num: -25,
+	},
+	mindmeld: {
+		onPrepareHit(source, target, move) {
+			if (move.category === 'Status');
+				source.addVolatile('mindmeld');
+			}
+		},
+		flags: {},
+		name: "Mindmeld",
+		rating: 3,
+		num: -26,
 	},
 };
