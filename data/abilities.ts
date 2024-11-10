@@ -6048,7 +6048,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 	},
 	mindmeld: {
 		onPrepareHit(source, target, move) {
-			if (move.category === 'Status');
+			if (move.category === 'Status') {
 				source.addVolatile('mindmeld');
 			}
 		},
