@@ -6073,11 +6073,11 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		rating: 3,
 		num: -27,
 	},
-	ironfist: {
+	capoeira: {
 		onBasePowerPriority: 23,
 		onBasePower(basePower, attacker, defender, move) {
 			if (move.flags['kicking']) {
-				this.debug('Iron Fist boost');
+				this.debug('Capoeira boost');
 				return this.chainModify([4915, 4096]);
 			}
 		},
@@ -6088,7 +6088,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			return accuracy;
 		},
 		flags: {},
-		name: "Iron Fist",
+		name: "Capoeira",
 		rating: 3,
 		num: -28,
 	},
