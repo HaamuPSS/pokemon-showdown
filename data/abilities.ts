@@ -5658,13 +5658,15 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		onSourceModifyAccuracyPriority: -1,
 		onSourceModifyAccuracy(accuracy) {
 			if (typeof accuracy !== 'number') return;
-			this.debug('butterflyeffect - enhancing accuracy');
+			this.debug('compoundeyes - enhancing accuracy');
 			return this.chainModify([5325, 4096]);
 		},
-		onBasePowerPriority: 23,
-		onBasePower(basePower, pokemon, target, move) {
-			if (defender.status || defender.hasAbility('comatose'))
-			return this.chainModify([4915, 4096]);
+		basePowerCallback(pokemon, target, move) {
+			if (target.status || target.hasAbility('comatose')) {
+				this.debug('BP doubled from status condition');
+				return move.basePower * 2;
+			}
+			return move.basePower;
 		},
 		flags: {},
 		name: "Butterfly Effect",
@@ -6047,6 +6049,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		num: -25,
 	},
 	mindmeld: {
+		// Works but is permanent, added remove volatile in moves
 		onPrepareHit(source, target, move) {
 			if (move.category === 'Status') {
 				source.addVolatile('mindmeld');
@@ -6056,5 +6059,99 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		name: "Mindmeld",
 		rating: 3,
 		num: -26,
+	},
+	baronsamedi: {
+		onAfterMoveSecondarySelf(source, target, move) {
+			if (target !== source && move.category !== 'Status') {
+				for (const move of ['Hex']) {
+					this.actions.useMove(move, source);
+				}
+			}
+		},
+		flags: {},
+		name: "Baron Samedi",
+		rating: 3,
+		num: -27,
+	},
+	ironfist: {
+		onBasePowerPriority: 23,
+		onBasePower(basePower, attacker, defender, move) {
+			if (move.flags['kicking']) {
+				this.debug('Iron Fist boost');
+				return this.chainModify([4915, 4096]);
+			}
+		},
+		onSourceModifyAccuracy(accuracy) {
+			if (move.flags['kicking']) {
+				return move.accuracy = true;
+			}
+			return accuracy;
+		},
+		flags: {},
+		name: "Iron Fist",
+		rating: 3,
+		num: -28,
+	},
+	knockout: {
+		onHit(target, source, move) {
+			if (!target.hp) return;
+			if (move?.effectType === 'Move' && target.getMoveHitData(move).crit) {
+				target.trySetStatus('slp', source);
+			}
+		},
+		onHit(target, source, move) {
+			if (move && target.getMoveHitData(move).typeMod > 0) {
+				target.addVolatile('yawn');
+			}
+		},
+		flags: {},
+		name: "Knockout",
+		rating: 3,
+		num: -29,
+	},
+	fortify: {
+		onStart(pokemon) {
+			let totalatk = 0;
+			let totalspa = 0;
+			for (const target of pokemon.foes()) {
+				totalatk += target.getStat('atk', false, true);
+				totalspa += target.getStat('spa', false, true);
+			}
+			if (totalatk && totalatk >= totalspa) {
+				this.boost({def: 1});
+			} else if (totalspa) {
+				this.boost({spd: 1});
+			}
+		},
+		flags: {},
+		name: "Fortify",
+		rating: 3,
+		num: -30,
+	},
+	temperedglass: {
+		flags: {},
+		name: "Tempered Glass",
+		rating: 3,
+		num: -31,
+	},
+	bittersweet: {
+		onStart(pokemon) {
+			let activated = false;
+			for (const target of pokemon.adjacentFoes()) {
+				if (!activated) {
+					this.add('-ability', pokemon, 'Bittersweet', 'boost');
+					activated = true;
+				}
+				if (target.volatiles['substitute'] || source.hp < source.maxhp) {
+					this.add('-immune', target);
+				} else {
+					this.boost({spe: -1}, target, pokemon, null, true);
+				}
+			}
+		},
+		flags: {},
+		name: "Bittersweet",
+		rating: 3,
+		num: -32,
 	},
 };

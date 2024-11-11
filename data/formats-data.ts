@@ -6019,4 +6019,16 @@ export const FormatsData: import('../sim/dex-species').SpeciesFormatsDataTable =
 		isNonstandard: "Custom",
 		tier: "Illegal",
 	},
+
+	// Custom megas
+	butterfreemega: {
+		isNonstandard: "Past",
+		tier: "Illegal",
+		natDexTier: "OU",
+	},
+	mega: {
+		isNonstandard: "Past",
+		tier: "Illegal",
+		natDexTier: "OU",
+	},
 };

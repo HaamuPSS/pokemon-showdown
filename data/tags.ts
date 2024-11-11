@@ -135,7 +135,11 @@ export const Tags: {[id: IDEntry]: TagData} = {
 		desc: "Affected by Heavy Claws.",
 		moveFilter: move => 'hammer' in move.flags,
 	},
-
+	kicking: {
+		name: "Kicking",
+		desc: "Affected by Capoeira.",
+		moveFilter: move => 'kicking' in move.flags,
+	},
 	// Tiers
 	// -----
 	uber: {
