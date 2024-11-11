@@ -6065,6 +6065,7 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			if (target !== source && move.category !== 'Status') {
 				for (const move of ['Hex']) {
 					this.actions.useMove(move, source);
+					return;
 				}
 			}
 		},
@@ -6081,11 +6082,15 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 				return this.chainModify([4915, 4096]);
 			}
 		},
-		onSourceModifyAccuracy(accuracy) {
+		onModifyMove(move) {
+			if (move.flags['kicking']) delete move.flags['protect'];
+			if (move.flags['kicking']) move.infiltrates = true;
+		},
+		onSourceModifyAccuracyPriority: -1,
+		onSourceModifyAccuracy(accuracy, target, source, move) {
 			if (move.flags['kicking']) {
-				return move.accuracy = true;
+				return accuracy = true;
 			}
-			return accuracy;
 		},
 		flags: {},
 		name: "Capoeira",
