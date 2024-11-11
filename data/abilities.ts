@@ -6098,8 +6098,6 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 			if (move?.effectType === 'Move' && target.getMoveHitData(move).crit) {
 				target.trySetStatus('slp', source);
 			}
-		},
-		onHit(target, source, move) {
 			if (move && target.getMoveHitData(move).typeMod > 0) {
 				target.addVolatile('yawn');
 			}
